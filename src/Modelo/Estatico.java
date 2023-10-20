@@ -11,7 +11,11 @@ import java.io.Serializable;
  *
  * @author andre
  */
-public abstract class Estatico implements Serializable{
+public abstract class Estatico extends Personagem implements Serializable{
+
+    public Estatico(String sNomeImagePNG) {
+        super(sNomeImagePNG);
+    }
 
     
     

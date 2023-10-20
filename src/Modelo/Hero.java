@@ -44,27 +44,54 @@ public class Hero extends Personagem implements Serializable{
     }
     
     public boolean moveUp() {
-        if(super.moveUp())
-            //Desenho.acessoATelaDoJogo().removePersonagem(this);
+        if(super.moveUp()){
+        try {
+            this.setDesenho("linkUp.png");
+    }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         return validaPosicao();
+        }
     return false;
     }
 
     public boolean moveDown() {
-        if(super.moveDown())
+        if(super.moveDown()){
+        try {
+            this.setDesenho("linkDown.png");
+    }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         return validaPosicao();
+        }
     return false;
     }
 
     public boolean moveRight() {
-        if(super.moveRight())
+        if(super.moveRight()){
+        try {
+            this.setDesenho("linkRight.png");
+    }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         return validaPosicao();
+        }
     return false;
     }
 
     public boolean moveLeft() {
-        if(super.moveLeft())
+        if(super.moveLeft()){
+        try {
+            this.setDesenho("linkLeft.png");
+    }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         return validaPosicao();
+        }
     return false;
     }    
     
