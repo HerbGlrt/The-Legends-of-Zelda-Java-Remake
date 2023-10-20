@@ -20,8 +20,10 @@ public class Hero extends Personagem implements Serializable{
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();
     }
-    
-    
+
+    public void setOlhando(int olhando) {
+        this.olhando = olhando;
+    }    
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
             if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
@@ -44,26 +46,26 @@ public class Hero extends Personagem implements Serializable{
     public boolean moveUp() {
         if(super.moveUp())
             //Desenho.acessoATelaDoJogo().removePersonagem(this);
-            return validaPosicao();
-        return false;
+        return validaPosicao();
+    return false;
     }
 
     public boolean moveDown() {
         if(super.moveDown())
-            return validaPosicao();
-        return false;
+        return validaPosicao();
+    return false;
     }
 
     public boolean moveRight() {
         if(super.moveRight())
-            return validaPosicao();
-        return false;
+        return validaPosicao();
+    return false;
     }
 
     public boolean moveLeft() {
         if(super.moveLeft())
-            return validaPosicao();
-        return false;
+        return validaPosicao();
+    return false;
     }    
     
 }

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -52,25 +53,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         faseAtual = new ArrayList<Personagem>();
 
         /*Cria faseAtual adiciona personagens*/
-        hero = new Hero("link2.png");
+        hero = new Hero("linkDown.png");
         hero.setPosicao(5, 5);
         this.addPersonagem(hero);
         
-        ZigueZague zz = new ZigueZague("darkghost.png");
-        zz.setPosicao(9, 9);
-        this.addPersonagem(zz);
+        //ZigueZague zz = new ZigueZague("darkghost.png");
+        //zz.setPosicao(9, 9);
+        //this.addPersonagem(zz);
 
-        BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("darkghost.png");
-        bBichinhoH.setPosicao(3, 3);
-        this.addPersonagem(bBichinhoH);
+        //BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("darkghost.png");
+        //bBichinhoH.setPosicao(3, 3);
+        //this.addPersonagem(bBichinhoH);
 
         /*BichinhoVaiVemHorizontal bBichinhoH2 = new BichinhoVaiVemHorizontal("roboPink.png");
         bBichinhoH2.setPosicao(6, 6);
         this.addPersonagem(bBichinhoH2);*/
 
-        Caveira bV = new Caveira("caveira.png");
-        bV.setPosicao(9, 1);
-        this.addPersonagem(bV);
+        //Caveira bV = new Caveira("caveira.png");;
+        //bV.setPosicao(9, 1);
+        //this.addPersonagem(bV);
     }
 
     public boolean ehPosicaoValida(Posicao p){
@@ -130,13 +131,16 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (e.getKeyCode() == KeyEvent.VK_C) {
             this.faseAtual.clear();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            hero.setOlhando(0);
             hero.moveUp();
-            
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            hero.setOlhando(2);
             hero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            hero.setOlhando(3);
             hero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            hero.setOlhando(1);
             hero.moveRight();
         }
 

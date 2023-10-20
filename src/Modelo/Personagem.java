@@ -20,7 +20,7 @@ public abstract class Personagem implements Serializable {
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
-
+    protected int olhando;           //Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -37,7 +37,12 @@ public abstract class Personagem implements Serializable {
             System.out.println(ex.getMessage());
         }
     }
-
+    
+    
+    public int getOlhando() {
+        return olhando;
+    }
+    
     public Posicao getPosicao() {
         /*TODO: Retirar este método para que objetos externos nao possam operar
          diretamente sobre a posição do Personagem*/
@@ -57,6 +62,7 @@ public abstract class Personagem implements Serializable {
     }
 
     public boolean setPosicao(int linha, int coluna) {
+        
         return pPosicao.setPosicao(linha, coluna);
     }
 
