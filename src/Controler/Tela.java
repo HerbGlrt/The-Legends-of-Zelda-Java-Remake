@@ -48,7 +48,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
-                (Consts.RES-12) * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         faseAtual = new ArrayList<Personagem>();
 
