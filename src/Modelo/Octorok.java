@@ -1,0 +1,30 @@
+package Modelo;
+
+import Auxiliar.Consts;
+import Auxiliar.Desenho;
+import Controler.Tela;
+import java.awt.Graphics;
+import java.io.Serializable;
+
+public class Octorok extends Personagem implements Serializable{
+     private int iContaIntervalos;
+    
+    public Octorok(String sNomeImagePNG) {
+        super(sNomeImagePNG);
+        this.bTransponivel = false;
+        this.iContaIntervalos = 0;
+    }
+
+    @Override
+    public void autoDesenho() {
+        super.autoDesenho();
+
+        this.iContaIntervalos++;
+        if(this.iContaIntervalos == Consts.TIMER){
+            this.iContaIntervalos = 0;
+            Projetil f = new Projetil("rok.png");
+            f.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            Desenho.acessoATelaDoJogo().addPersonagem(f);
+        }
+    }    
+}

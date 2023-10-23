@@ -1,7 +1,7 @@
 package Controler;
 
 import Modelo.Personagem;
-import Modelo.Caveira;
+import Modelo.Octorok;
 import Modelo.Hero;
 import Modelo.BichinhoVaiVemHorizontal;
 import Auxiliar.Consts;
@@ -57,21 +57,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hero.setPosicao(5, 5);
         this.addPersonagem(hero);
         
-        //ZigueZague zz = new ZigueZague("darkghost.png");
-        //zz.setPosicao(9, 9);
-        //this.addPersonagem(zz);
+        ZigueZague zz = new ZigueZague("darkghost.png");
+        zz.setPosicao(9, 9);
+        this.addPersonagem(zz);
 
-        //BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("darkghost.png");
-        //bBichinhoH.setPosicao(3, 3);
-        //this.addPersonagem(bBichinhoH);
+        BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("darkghost.png");
+        bBichinhoH.setPosicao(3, 3);
+        this.addPersonagem(bBichinhoH);
 
-        /*BichinhoVaiVemHorizontal bBichinhoH2 = new BichinhoVaiVemHorizontal("roboPink.png");
+        BichinhoVaiVemHorizontal bBichinhoH2 = new BichinhoVaiVemHorizontal("roboPink.png");
         bBichinhoH2.setPosicao(6, 6);
-        this.addPersonagem(bBichinhoH2);*/
+        this.addPersonagem(bBichinhoH2);
 
-        //Caveira bV = new Caveira("caveira.png");;
-        //bV.setPosicao(9, 1);
-        //this.addPersonagem(bV);
+        Octorok bV = new Octorok("octorok.png");
+        bV.setPosicao(9, 1);
+        this.addPersonagem(bV);
     }
 
     public boolean ehPosicaoValida(Posicao p){
@@ -141,6 +141,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hero.setOlhando(1);
             hero.moveRight();
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+            hero.ataca();
         }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "

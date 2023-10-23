@@ -33,6 +33,10 @@ public class Hero extends Personagem implements Serializable{
         }
         return false;       
     }
+    
+    public void ataca(){
+        
+    }
 
     /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/
     private boolean validaPosicao(){
