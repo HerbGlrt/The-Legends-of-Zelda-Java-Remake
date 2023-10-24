@@ -1,5 +1,9 @@
 package Fases;
 
+/**
+ *
+ * @author Henrique Araujo
+ */
 public abstract class Fase {
     private String[][] matriz;
     

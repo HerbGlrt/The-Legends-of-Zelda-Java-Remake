@@ -6,18 +6,37 @@ import Controler.Tela;
 import java.awt.Graphics;
 
 public class Projetil extends Personagem implements Serializable{
-    public Projetil(String sNomeImagePNG) {
+    int i;
+    public Projetil(String sNomeImagePNG,int i) {
         super(sNomeImagePNG);
         this.setIsProjetil(true);
         this.setbMortal(true);
         this.setbTransponivel(true);
+        this.i=i;
     }
 
-    @Override
     public void autoDesenho() {
         super.autoDesenho();
-        if(!this.moveRight())
+        if (i == 0 && !this.moveUp()){ // 0 UP; 1 RIGHT;  2 DOWN;  3 LEFT
             Desenho.acessoATelaDoJogo().removePersonagem(this);
+        }
+        else{
+            if (i == 1 && !this.moveRight()){
+                Desenho.acessoATelaDoJogo().removePersonagem(this);
+            }
+            else{
+                if(i == 2){
+                    if(!this.moveDown())
+                        Desenho.acessoATelaDoJogo().removePersonagem(this);
+                }
+                else{
+                    if (i == 3){
+                        if(!this.moveLeft())
+                            Desenho.acessoATelaDoJogo().removePersonagem(this);
+                    }
+                }
+            }
+        }
     }
     
 }

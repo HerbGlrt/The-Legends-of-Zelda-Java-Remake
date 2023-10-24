@@ -9,7 +9,12 @@ import java.util.ArrayList;
 public class ControleDeJogo {
     public void desenhaTudo(ArrayList<Personagem> e){
         for(int i = 0; i < e.size(); i++){
-            e.get(i).autoDesenho();
+            if(e.get(i) instanceof Projetil){
+                e.get(i).autoDesenho();
+            }
+            else{
+                e.get(i).autoDesenho();
+            }
         }
     }
     
