@@ -126,7 +126,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.PERIOD);
     }
-
+    
     public void keyPressed(KeyEvent e) {
         if(idelay == 3){
             idelay = 0;
@@ -145,7 +145,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.setOlhando(1);
             hero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
-            hero.espada();
+            hero.espada(hero.getOlhando());
+            
         }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "

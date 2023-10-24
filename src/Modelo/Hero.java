@@ -23,7 +23,12 @@ public class Hero extends Personagem implements Serializable{
 
     public void setOlhando(int olhando) {
         this.olhando = olhando;
-    }    
+    }
+
+    public int getOlhando() {
+        return olhando;
+    }
+    
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
             if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
@@ -34,10 +39,57 @@ public class Hero extends Personagem implements Serializable{
         return false;       
     }
     
-    public void espada(){
-        Projetil espada = new Projetil("espada.png");
-            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+    public void autoDesenho(int i){
+        super.autoDesenho();
+        if (i == 0){
+            Projetil espada = new Projetil("espada.png",0);
+            espada.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }
+        else{
+            if (i == 1){
+                Projetil espada = new Projetil("espada.png",1);
+                espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+                Desenho.acessoATelaDoJogo().addPersonagem(espada);
+            }
+            else{
+                if(i == 2){
+                    Projetil espada = new Projetil("espada.png",2);
+                    espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
+                    Desenho.acessoATelaDoJogo().addPersonagem(espada);
+                }
+                else{
+                    if (i == 3){
+                        Projetil espada = new Projetil("espada.png",3);
+                        espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
+                        Desenho.acessoATelaDoJogo().addPersonagem(espada);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void espada(int obj){
+        switch (obj){
+            case 0:{ // UP
+                autoDesenho(0);
+                break;
+            }
+            case 1:{ // RIGHT
+                autoDesenho(1);
+                break;
+            }
+            case 2:{ // DOWN
+                autoDesenho(2);
+                break;
+            }
+            case 3:{ // LEFT
+                autoDesenho(3);
+                break;
+            }
+            default:
+                break;
+        }
     }
 
     /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/
@@ -52,13 +104,7 @@ public class Hero extends Personagem implements Serializable{
     public boolean moveUp() {
         if(super.moveUp()){
         try {
-            if(this.getCountSprite() == 1){
             this.setDesenho("linkUp.png");
-            this.setCountSprite(0);
-            }else{
-            this.setDesenho("linkUp2.png");
-            this.setCountSprite(1);
-            }
     }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -71,13 +117,7 @@ public class Hero extends Personagem implements Serializable{
     public boolean moveDown() {
         if(super.moveDown()){
         try {
-            if(this.getCountSprite() == 1){
             this.setDesenho("linkDown.png");
-            this.setCountSprite(0);
-            }else{
-            this.setDesenho("linkDown2.png");
-            this.setCountSprite(1);
-            }
     }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -90,13 +130,7 @@ public class Hero extends Personagem implements Serializable{
     public boolean moveRight() {
         if(super.moveRight()){
         try {
-            if(this.getCountSprite() == 1){
             this.setDesenho("linkRight.png");
-            this.setCountSprite(0);
-            }else{
-            this.setDesenho("linkRight2.png");
-            this.setCountSprite(1);
-            }
     }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -109,13 +143,7 @@ public class Hero extends Personagem implements Serializable{
     public boolean moveLeft() {
         if(super.moveLeft()){
         try {
-            if(this.getCountSprite() == 1){
             this.setDesenho("linkLeft.png");
-            this.setCountSprite(0);
-            }else{
-            this.setDesenho("linkLeft2.png");
-            this.setCountSprite(1);
-            }
     }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
