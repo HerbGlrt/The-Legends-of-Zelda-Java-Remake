@@ -130,25 +130,32 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         if(idelay == 3){
             idelay = 0;
-        if (e.getKeyCode() == KeyEvent.VK_C) {
-            this.faseAtual.clear();
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            hero.setOlhando(0);
-            hero.moveUp();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            hero.setOlhando(2);
-            hero.moveDown();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            hero.setOlhando(3);
-            hero.moveLeft();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hero.setOlhando(1);
-            hero.moveRight();
-        } else if (e.getKeyCode() == KeyEvent.VK_A) {
-            hero.espada(hero.getOlhando());
-            
-        }
-
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_C:
+                    this.faseAtual.clear();
+                    break;
+                case KeyEvent.VK_UP:
+                    hero.setOlhando(0);
+                    hero.moveUp();
+                    break;
+                case KeyEvent.VK_DOWN:
+                    hero.setOlhando(2);
+                    hero.moveDown();
+                    break;
+                case KeyEvent.VK_LEFT:
+                    hero.setOlhando(3);
+                    hero.moveLeft();
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    hero.setOlhando(1);
+                    hero.moveRight();
+                    break;
+                case KeyEvent.VK_A:
+                    hero.espada(hero.getOlhando());
+                    break;
+                default:
+                    break;
+            }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
                 + (hero.getPosicao().getLinha()));
         }else{

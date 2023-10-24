@@ -22,6 +22,7 @@ public abstract class Personagem implements Serializable {
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected int olhando;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
     protected boolean isProjetil = false;   // O personagem é um projétil?
+    protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -50,6 +51,13 @@ public abstract class Personagem implements Serializable {
         this.isProjetil = isProjetil;
     }
     
+    public int getCountSprite() {
+        return countSprite;
+    }
+
+    public void setCountSprite(int countSprite) {
+        this.countSprite = countSprite;
+    }
     public int getOlhando() {
         return olhando;
     }
