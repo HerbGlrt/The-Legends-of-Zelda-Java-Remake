@@ -20,12 +20,11 @@ public abstract class Personagem implements Serializable {
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
-    protected int olhando;           //Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
+    protected int olhando;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
+    protected boolean isProjetil = false;   // O personagem é um projétil?
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
-        this.bTransponivel = true;
-        this.bMortal = false;
         try {
             setDesenho(sNomeImagePNG);
     }
@@ -42,6 +41,14 @@ public abstract class Personagem implements Serializable {
         g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
         iImage = new ImageIcon(bi);    
     } 
+
+    public boolean getsIsProjetil() {
+        return isProjetil;
+    }
+
+    public void setIsProjetil(boolean isProjetil) {
+        this.isProjetil = isProjetil;
+    }
     
     public int getOlhando() {
         return olhando;
@@ -53,7 +60,7 @@ public abstract class Personagem implements Serializable {
         return pPosicao;
     }
 
-    public boolean isbTransponivel() {
+    public boolean getbTransponivel() {
         return bTransponivel;
     }
 
@@ -61,6 +68,14 @@ public abstract class Personagem implements Serializable {
         this.bTransponivel = bTransponivel;
     }
 
+    public void setbMortal(boolean bMortal) {
+        this.bMortal = bMortal;
+    }
+
+    public boolean getbMortal() {
+        return bMortal;
+    }
+        
     public void autoDesenho(){
         Desenho.desenhar(this.iImage, this.pPosicao.getColuna(), this.pPosicao.getLinha());        
     }

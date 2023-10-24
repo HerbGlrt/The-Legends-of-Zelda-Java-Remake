@@ -34,8 +34,10 @@ public class Hero extends Personagem implements Serializable{
         return false;       
     }
     
-    public void ataca(){
-        
+    public void espada(){
+        Projetil espada = new Projetil("espada.png");
+            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
     }
 
     /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/

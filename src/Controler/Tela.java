@@ -62,11 +62,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.addPersonagem(zz);
 
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH.setPosicao(3, 3);
+        bBichinhoH.setPosicao(5, 12);
         this.addPersonagem(bBichinhoH);
 
         BichinhoVaiVemHorizontal bBichinhoH2 = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH2.setPosicao(6, 6);
+        bBichinhoH2.setPosicao(4, 12);
         this.addPersonagem(bBichinhoH2);
 
         Octorok bV = new Octorok("octorok.png");
@@ -142,7 +142,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.setOlhando(1);
             hero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
-            hero.ataca();
+            hero.espada();
         }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "

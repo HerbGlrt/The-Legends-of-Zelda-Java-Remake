@@ -4,6 +4,7 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Controler.Tela;
 import java.awt.Graphics;
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Octorok extends Personagem implements Serializable{
@@ -11,8 +12,9 @@ public class Octorok extends Personagem implements Serializable{
     
     public Octorok(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bTransponivel = true;
         this.iContaIntervalos = 0;
+        this.setbMortal(true);
+        this.setbTransponivel(true);
     }
 
     @Override
@@ -26,5 +28,6 @@ public class Octorok extends Personagem implements Serializable{
             f.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
             Desenho.acessoATelaDoJogo().addPersonagem(f);
         }
+
     }    
 }

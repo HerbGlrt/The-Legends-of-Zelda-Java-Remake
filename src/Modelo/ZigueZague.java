@@ -7,6 +7,8 @@ public class ZigueZague extends Personagem{
     
     public ZigueZague(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.setbMortal(true);
+        this.setbTransponivel(true);
     }
 
     public void autoDesenho(){

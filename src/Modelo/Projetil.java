@@ -8,7 +8,9 @@ import java.awt.Graphics;
 public class Projetil extends Personagem implements Serializable{
     public Projetil(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bMortal = true;
+        this.setIsProjetil(true);
+        this.setbMortal(true);
+        this.setbTransponivel(true);
     }
 
     @Override
