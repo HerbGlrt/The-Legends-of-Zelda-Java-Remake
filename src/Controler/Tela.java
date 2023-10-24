@@ -39,6 +39,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
+    private int idelay;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -127,6 +128,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void keyPressed(KeyEvent e) {
+        if(idelay == 3){
+            idelay = 0;
         if (e.getKeyCode() == KeyEvent.VK_C) {
             this.faseAtual.clear();
         } else if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -147,7 +150,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
                 + (hero.getPosicao().getLinha()));
-
+        }else{
+            idelay++;
+        }
         //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
     }
 
