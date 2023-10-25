@@ -32,7 +32,12 @@ public class ControleDeJogo {
                 }
             }
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao())){
-                umaFase.remove(hero);   // Deve tirar 1 de vida do heroi
+                if (hero.vida(umaFase) == 0){
+                    umaFase.remove(hero);
+                }
+                if(pIesimoPersonagem.getsIsProjetil() == true){
+                    umaFase.remove(pIesimoPersonagem);
+                }
             }
         }              
     }

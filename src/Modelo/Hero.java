@@ -1,6 +1,7 @@
 package Modelo;
 
 import Auxiliar.Consts;
+import Modelo.Estatico;
 import Auxiliar.Desenho;
 import Controler.ControleDeJogo;
 import Controler.Tela;
@@ -8,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,6 +39,30 @@ public class Hero extends Personagem implements Serializable{
             return true;
         }
         return false;       
+    }
+    //5, 7, 9
+    public int vida(ArrayList<Personagem> umaFase) throws IOException{
+        this.setVida(this.getVida() - 1);
+        
+        switch(this.getVida()){
+            case 2:
+                Estatico coracao1  = (Estatico)umaFase.get(9);
+                coracao1.setDesenho("coracaoVazio.png");
+                break;
+            case 1:
+                Estatico coracao2  = (Estatico)umaFase.get(7);
+                coracao2.setDesenho("coracaoVazio.png");
+                break;
+             case 0:
+                Estatico coracao3  = (Estatico)umaFase.get(5);
+                coracao3.setDesenho("coracaoVazio.png");
+                break;
+        }
+        if(this.getVida() == 0){
+            return 0;
+        }else{
+            return 1;
+        }
     }
     
     public void autoDesenho(int i){

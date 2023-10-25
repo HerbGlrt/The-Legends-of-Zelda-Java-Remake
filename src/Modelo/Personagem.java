@@ -22,7 +22,9 @@ public abstract class Personagem implements Serializable {
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected int olhando;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
     protected boolean isProjetil = false;   // O personagem é um projétil?
+    protected int isCoracao = 0;   // O personagem é um coração? (0 = Não, 1 = Coração cheio, 2 = Coração vazio)
     protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
+    protected int vida = 3; // Vida do personagem
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -50,7 +52,23 @@ public abstract class Personagem implements Serializable {
     public void setIsProjetil(boolean isProjetil) {
         this.isProjetil = isProjetil;
     }
-    
+
+    public int getIsCoracao() {
+        return isCoracao;
+    }
+
+    public void setIsCoracao(int isCoracao) {
+        this.isCoracao = isCoracao;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
     public int getCountSprite() {
         return countSprite;
     }
