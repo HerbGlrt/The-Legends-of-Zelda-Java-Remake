@@ -128,6 +128,85 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.addPersonagem(b16);
     }
 
+       // -----------------------------------------------------------------------------
+    
+    String[][] matrix = {{"areia.png", "arbusto2.png", "arbusto2.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 0
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 1
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 2
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 3
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 4
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 5
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 6
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 7
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 8
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 9
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 10
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 11
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 12
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 13
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 14
+                            {"areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", 
+                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 15
+        };
+    
+    
+    // --------------------------------------------------------------------------
+    
+    public void criar_fase(){
+        for(int i = 0; i < 16; i++){
+            Estatico obj = new Estatico(matrix[0][1]);
+            obj.setPosicao(0, 9);
+            this.addPersonagem(obj);
+        }
+    }
+
     public boolean ehPosicaoValida(Posicao p){
         return cj.ehPosicaoValida(this.faseAtual, p);
     }

@@ -4,7 +4,7 @@ package Fases;
  *
  * @author Henrique Araujo
  */
-public abstract class Fase {
+public class Fase {
     private String[][] matriz;
     
     public Fase(String[][] matriz){
