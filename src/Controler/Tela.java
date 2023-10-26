@@ -42,7 +42,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int idelay;
+    private int constDelay = 2;
+    private int idelay = constDelay;
     private int nivel = 0;
 
     public Tela() {
@@ -145,48 +146,40 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
     
     public void keyPressed(KeyEvent e) {
-        if(idelay == 0){
-            idelay = 0;
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_C:
-                    this.faseAtual.clear();
-                    break;
-                case KeyEvent.VK_UP:
-                    hero.setOlhando(0);
-                    hero.moveUp();
-                    break;
-                case KeyEvent.VK_DOWN:
-                    hero.setOlhando(2);
-                    hero.moveDown();
-                    break;
-                case KeyEvent.VK_LEFT:
-                    hero.setOlhando(3);
-                    hero.moveLeft();
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    hero.setOlhando(1);
-                    hero.moveRight();
-                    break;
-                case KeyEvent.VK_A:
-                {
-                    try {
-                        hero.espada(hero.getOlhando());
-                    } catch (IOException ex) {
-                        Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                    break;
-
-                default:
-                    break;
+        if(e.getKeyCode() == KeyEvent.VK_A){
+            try {
+                hero.espada(hero.getOlhando());
+                idelay = constDelay;
+            } catch (IOException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
-        this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
-                + (hero.getPosicao().getLinha()));
-        }else{
-            idelay++;
+        }else if(e.getKeyCode() == KeyEvent.VK_C){
+            this.faseAtual.clear();
         }
-        //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
+        else if(e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay){
+           idelay = 0;
+           hero.setOlhando(0);
+           hero.moveUp();
+        }else if(e.getKeyCode() == KeyEvent.VK_DOWN && idelay >= constDelay){
+            idelay = 0;
+            hero.setOlhando(2);
+            hero.moveDown();
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT && idelay >= constDelay){
+            idelay = 0;
+            hero.setOlhando(3);
+            hero.moveLeft();
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_RIGHT && idelay >= constDelay){
+            idelay = 0;
+            hero.setOlhando(1);
+            hero.moveRight();
+        }
+        this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
+        idelay++;
     }
+        //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
+    
 
     public void mousePressed(MouseEvent e) {
         /* Clique do mouse desligado*/
