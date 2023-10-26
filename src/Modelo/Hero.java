@@ -33,15 +33,15 @@ public class Hero extends Personagem implements Serializable{
         
         switch(this.getVida()){
             case 2:
-                Estatico coracao1  = (Estatico)umaFase.get(8);
+                Estatico coracao1  = (Estatico)umaFase.get(5);
                 coracao1.setDesenho("coracaoVazio.png");
                 break;
             case 1:
-                Estatico coracao2  = (Estatico)umaFase.get(6);
+                Estatico coracao2  = (Estatico)umaFase.get(3);
                 coracao2.setDesenho("coracaoVazio.png");
                 break;
              case 0:
-                Estatico coracao3  = (Estatico)umaFase.get(4);
+                Estatico coracao3  = (Estatico)umaFase.get(1);
                 coracao3.setDesenho("coracaoVazio.png");
                 break;
         }
@@ -54,31 +54,22 @@ public class Hero extends Personagem implements Serializable{
     
     public void autoDesenho(int i){ // Função que desenha a espada para ataque à distância
         super.autoDesenho();
-        if (i == 0){
+        if (i == 0 && (pPosicao.getLinha()-1) > 0){
             Projetil espada = new Projetil("espadaCima.png",0);
             espada.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
-        }
-        else{
-            if (i == 1){
-                Projetil espada = new Projetil("espadaDir.png",1);
-                espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+        }else if (i == 1 && (pPosicao.getColuna()+1) < Auxiliar.Consts.RES){
+            Projetil espada = new Projetil("espadaDir.png",1);
+            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }else if(i == 2 && (pPosicao.getLinha()+1) < Auxiliar.Consts.RES){
+                Projetil espada = new Projetil("espadaBaixo.png",2);
+                espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
                 Desenho.acessoATelaDoJogo().addPersonagem(espada);
-            }
-            else{
-                if(i == 2){
-                    Projetil espada = new Projetil("espadaBaixo.png",2);
-                    espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
-                    Desenho.acessoATelaDoJogo().addPersonagem(espada);
-                }
-                else{
-                    if (i == 3){
-                        Projetil espada = new Projetil("espadaEsq.png",3);
-                        espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
-                        Desenho.acessoATelaDoJogo().addPersonagem(espada);
-                    }
-                }
-            }
+        }else if (i == 3 && (pPosicao.getColuna()-1) > 0){
+            Projetil espada = new Projetil("espadaEsq.png",3);
+            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }
     }
     
@@ -86,28 +77,28 @@ public class Hero extends Personagem implements Serializable{
         switch (obj){
             case 0:{ // UP
                 if(getVida() == 3){
-                autoDesenho(0);
+                autoDesenho(obj);
                 this.setDesenho("linkAtkC1.png");
                 }
                 break;
             }
             case 1:{ // RIGHT
                 if(getVida() == 3){
-                autoDesenho(1);
+                autoDesenho(obj);
                 this.setDesenho("linkAtkD1.png");
                 }
                 break;
             }
             case 2:{ // DOWN
                 if(getVida() == 3){
-                autoDesenho(2);
+                autoDesenho(obj);
                 this.setDesenho("linkAtkB1.png");
                 }
                 break;
             }
             case 3:{ // LEFT
                 if(getVida() == 3){
-                autoDesenho(3);
+                autoDesenho(obj);
                 this.setDesenho("linkAtkE1.png");
                 }
                 break;

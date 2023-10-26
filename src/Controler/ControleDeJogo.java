@@ -25,12 +25,9 @@ public class ControleDeJogo {
         Personagem pIesimoPersonagem;
         for(int i = 1; i < umaFase.size(); i++){
             pIesimoPersonagem = umaFase.get(i);
-            if(espada.getsIsProjetil() == true && pIesimoPersonagem.getsIsProjetil() == false && espada.getPosicao().igual(pIesimoPersonagem.getPosicao())){
-                if(pIesimoPersonagem.getbTransponivel()){
-                    if(pIesimoPersonagem.getbMortal())   // Checa se o personagem é mortal antes de retira-lo;
+            if(espada.getsIsProjetil() == true && pIesimoPersonagem.getsIsProjetil() == false && espada.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getbMortal() == true){
                         umaFase.remove(pIesimoPersonagem);
-                        umaFase.remove(umaFase.size() - 1);
-                }
+                        umaFase.remove(espada);
             }
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao())){
                 if (hero.vida(umaFase) == 0){
