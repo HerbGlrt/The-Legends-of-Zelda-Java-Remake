@@ -42,7 +42,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int constDelay = 2;
+    private int constDelay = 1;
     private int idelay = constDelay;
     private int nivel = 0;
 
@@ -129,6 +129,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 addInimigos();
                 nivel++;
             }
+        if(idelay < 20){
+            idelay++;
+        }
     }
 
     public void go() {
@@ -172,7 +175,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.moveRight();
         }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
-        idelay++;
     }
         //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
     
