@@ -64,10 +64,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
     
     public void addInimigos(){
-        ZigueZague zz = new ZigueZague("octorok.png");
-        zz.setPosicao(2, 11);
-        this.addPersonagem(zz);
-
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
         bBichinhoH.setPosicao(8, 3);
         this.addPersonagem(bBichinhoH);

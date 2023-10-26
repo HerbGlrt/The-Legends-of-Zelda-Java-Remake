@@ -4,11 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Controler/Tela.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Projetil.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Hero.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Auxiliar/Posicao.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Controler/ControleDeJogo.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Estatico.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Personagem.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Teleport.java</file>
         </group>
     </open-files>
 </project-private>
