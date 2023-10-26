@@ -7,6 +7,6 @@ public class Estatico extends Personagem implements Serializable{
     public Estatico(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.setbMortal(false);
-        this.setbTransponivel(true);
+        this.setbTransponivel(false);
     }
 }

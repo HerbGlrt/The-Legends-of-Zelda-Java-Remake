@@ -18,7 +18,7 @@ public class BichinhoVaiVemHorizontal extends Personagem  implements Serializabl
         super(sNomeImagePNG);
         bRight = true;
         this.setbMortal(true);
-        this.setbTransponivel(true);
+        this.setbTransponivel(false);
     }
     public void autoDesenho(){
         if(bRight)

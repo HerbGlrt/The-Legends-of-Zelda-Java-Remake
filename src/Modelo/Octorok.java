@@ -14,7 +14,7 @@ public class Octorok extends Personagem implements Serializable{
         super(sNomeImagePNG);
         this.iContaIntervalos = 0;
         this.setbMortal(true);
-        this.setbTransponivel(true);
+        this.setbTransponivel(false);
     }
 
     @Override

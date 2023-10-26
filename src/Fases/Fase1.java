@@ -1,73 +1,26 @@
 package Fases;
 
 public  class Fase1{
-    static String[][] matriz1 = {{"areia.png", "arbusto2.png", "arbusto2.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 0
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 1
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 2
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 3
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 4
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 5
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 6
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 7
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 8
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 9
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 10
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 11
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 12
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 13
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 14
-                            {"areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", 
-                            "areia.png", "areia.png", "areia.png", "areia.png", }, // LINHA 15
+    static String[][] matriz1 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
+                                {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", null, null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 1
+                                {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "preto.png", "arbusto.png", "arbustoSepDir.png", null, null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 2
+                                {"arbusto.png", "arbusto.png", "arbusto.png", "arbustoSepDir.png", null, null, null, null, null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 3
+                                {"arbusto.png", "arbusto.png", "arbustoSepDir.png", null, null, null, null, null, null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 4
+                                {"arbusto.png", "arbustoSepDir.png", null, null, null, null, null, null, null, "arbustoSepEsq.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 5
+                                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 6
+                                {"arbustoSepSup.png", "arbustoSepSupDir.png", null, null, null, null, null, null, null, null, null, null, null, null, "arbusto.png", "arbusto.png", }, // LINHA 7
+                                {"arbusto.png", "arbusto.png", null, null, null, null, null, null, null, null, null, null, null, null, "arbusto.png", "arbusto.png", }, // LINHA 8
+                                {"arbusto.png", "arbusto.png", null, null, null, null, null, null, null, null, null, null, null, null, "arbusto.png", "arbusto.png", }, // LINHA 9
+                                {"arbusto.png", "arbusto.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbusto.png", "arbusto.png", }, // LINHA 10
+                                {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 11
+
         };
 
     public static String[][] getMatriz() {
         return matriz1;
+    }
+    
+    public static String getValor(int i, int j){
+        return matriz1[i][j];
     }
 }

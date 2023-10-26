@@ -8,12 +8,12 @@ public class ZigueZague extends Personagem{
     public ZigueZague(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.setbMortal(true);
-        this.setbTransponivel(true);
+        this.setbTransponivel(false);
     }
 
     public void autoDesenho(){
         Random rand = new Random();
-        int iDirecao = rand.nextInt(4);
+        int iDirecao = rand.nextInt(4)+1;
         
         if(iDirecao == 1)
             this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);

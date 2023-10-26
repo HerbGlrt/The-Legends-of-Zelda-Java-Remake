@@ -1,5 +1,7 @@
 package Controler;
 
+import Fases.Fase;
+import Fases.Fase1;
 import Modelo.Personagem;
 import Modelo.Octorok;
 import Modelo.Hero;
@@ -49,8 +51,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
-        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
-                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right, (Consts.RES-4) * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         faseAtual = new ArrayList<Personagem>();
 
@@ -74,58 +75,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Octorok bV = new Octorok("octorok.png");
         bV.setPosicao(9, 1);
         this.addPersonagem(bV);
-        
-        Estatico b1 = new Estatico("coracaoCheio.png");
-        b1.setIsCoracao(1);
-        b1.setPosicao(0,0);
-        this.addPersonagem(b1);
-        Estatico b2 = new Estatico("preto.png");
-        b2.setPosicao(0,1);
-        this.addPersonagem(b2);
-        Estatico b3 = new Estatico("coracaoCheio.png");
-        b3.setIsCoracao(1);
-        b3.setPosicao(0,2);
-        this.addPersonagem(b3);
-        Estatico b4 = new Estatico("preto.png");
-        b4.setPosicao(0,3);
-        this.addPersonagem(b4);
-        Estatico b5 = new Estatico("coracaoCheio.png");
-        b5.setIsCoracao(1);
-        b5.setPosicao(0,4);
-        this.addPersonagem(b5);
-        Estatico b6 = new Estatico("preto.png");
-        b6.setPosicao(0,5);
-        this.addPersonagem(b6);
-        Estatico b7 = new Estatico("preto.png");
-        b7.setPosicao(0,6);
-        this.addPersonagem(b7);
-        Estatico b8 = new Estatico("preto.png");
-        b8.setPosicao(0,7);
-        this.addPersonagem(b8);
-        Estatico b9 = new Estatico("preto.png");
-        b9.setPosicao(0,8);
-        this.addPersonagem(b9);
-        Estatico b10 = new Estatico("preto.png");
-        b10.setPosicao(0,9);
-        this.addPersonagem(b10);
-        Estatico b11 = new Estatico("preto.png");
-        b11.setPosicao(0,10);
-        this.addPersonagem(b11);
-        Estatico b12 = new Estatico("preto.png");
-        b12.setPosicao(0,11);
-        this.addPersonagem(b12);
-        Estatico b13 = new Estatico("preto.png");
-        b13.setPosicao(0,12);
-        this.addPersonagem(b13);
-        Estatico b14 = new Estatico("preto.png");
-        b14.setPosicao(0,13);
-        this.addPersonagem(b14);
-        Estatico b15 = new Estatico("preto.png");
-        b15.setPosicao(0,14);
-        this.addPersonagem(b15);
-        Estatico b16 = new Estatico("preto.png");
-        b16.setPosicao(0,15);
-        this.addPersonagem(b16);
     }
     
     public boolean ehPosicaoValida(Posicao p){
@@ -170,6 +119,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
+        }
+        
+        for(int i = 0; i < 16; i++){
+            for(int j = 0; j < 16; j++){
+                if(Fase1.getValor(i, j) != null){
+                   Fase f = new Fase();
+                   this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
+                }
+            }
         }
     }
 

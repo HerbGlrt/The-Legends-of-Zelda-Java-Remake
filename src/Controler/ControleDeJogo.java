@@ -1,7 +1,5 @@
 package Controler;
 
-import Fases.Fase;
-import Fases.Fase1;
 import Modelo.Personagem;
 import Modelo.Hero;
 import Modelo.Projetil;
@@ -22,8 +20,6 @@ public class ControleDeJogo {
     }
     
     public void processaTudo(ArrayList<Personagem> umaFase) throws IOException{
-        Fase f = new Fase();
-        f.criaFase(Fase1.getMatriz());
         Hero hero = (Hero)umaFase.get(0);
         Personagem espada = umaFase.get(umaFase.size() - 1);    // temp será o último personagem criado, possivelmente uma epsada do heroi
         Personagem pIesimoPersonagem;
