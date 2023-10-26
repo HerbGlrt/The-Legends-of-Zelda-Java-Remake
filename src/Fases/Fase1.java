@@ -13,6 +13,10 @@ public  class Fase1{
                                 {"arbusto.png", "arbusto.png", null, null, null, null, null, null, null, null, null, null, null, null, "arbusto.png", "arbusto.png", }, // LINHA 9
                                 {"arbusto.png", "arbusto.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbustoSepSup.png", "arbusto.png", "arbusto.png", }, // LINHA 10
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 11
+                                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 12
+                                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 13
+                                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 14
+                                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 15
 
         };
 

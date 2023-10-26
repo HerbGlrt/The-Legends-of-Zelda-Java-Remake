@@ -43,6 +43,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int idelay;
+    private int nivel = 0;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -61,19 +62,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.addPersonagem(hero);
         
         ZigueZague zz = new ZigueZague("octorok.png");
-        zz.setPosicao(9, 9);
+        zz.setPosicao(4, 4);
         this.addPersonagem(zz);
 
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH.setPosicao(5, 12);
+        bBichinhoH.setPosicao(8, 3);
         this.addPersonagem(bBichinhoH);
 
-        BichinhoVaiVemHorizontal bBichinhoH2 = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH2.setPosicao(4, 12);
-        this.addPersonagem(bBichinhoH2);
-
         Octorok bV = new Octorok("octorok.png");
-        bV.setPosicao(9, 1);
+        bV.setPosicao(9, 3);
         this.addPersonagem(bV);
     }
     
@@ -115,20 +112,23 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
+
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
         }
-        
-        for(int i = 0; i < 16; i++){
-            for(int j = 0; j < 16; j++){
-                if(Fase1.getValor(i, j) != null){
-                   Fase f = new Fase();
-                   this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
+        if(nivel == 0){
+            for(int i = 0; i < 16; i++){
+                for(int j = 0; j < 16; j++){
+                    if(Fase1.getValor(i, j) != null){
+                    Fase f = new Fase();
+                    this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
+                        }
+                    }
                 }
+                nivel++;
             }
-        }
     }
 
     public void go() {

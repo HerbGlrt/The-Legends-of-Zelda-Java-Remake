@@ -19,9 +19,6 @@ public class Hero extends Personagem implements Serializable{
         super(sNomeImagePNG);
     }
 
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
-    }
 
     public void setOlhando(int olhando) {
         this.olhando = olhando;
@@ -31,30 +28,20 @@ public class Hero extends Personagem implements Serializable{
         return olhando;
     }
     
-    public boolean setPosicao(int linha, int coluna){
-        if(this.pPosicao.setPosicao(linha, coluna)){
-            if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
-                this.voltaAUltimaPosicao();
-            }
-            return true;
-        }
-        return false;       
-    }
-    //5, 7, 9
     public int vida(ArrayList<Personagem> umaFase) throws IOException{
         this.setVida(this.getVida() - 1);
         
         switch(this.getVida()){
             case 2:
-                Estatico coracao1  = (Estatico)umaFase.get(9);
+                Estatico coracao1  = (Estatico)umaFase.get(8);
                 coracao1.setDesenho("coracaoVazio.png");
                 break;
             case 1:
-                Estatico coracao2  = (Estatico)umaFase.get(7);
+                Estatico coracao2  = (Estatico)umaFase.get(6);
                 coracao2.setDesenho("coracaoVazio.png");
                 break;
              case 0:
-                Estatico coracao3  = (Estatico)umaFase.get(5);
+                Estatico coracao3  = (Estatico)umaFase.get(4);
                 coracao3.setDesenho("coracaoVazio.png");
                 break;
         }
@@ -116,15 +103,6 @@ public class Hero extends Personagem implements Serializable{
             default:
                 break;
         }
-    }
-
-    /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/
-    private boolean validaPosicao(){
-        if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
-            this.voltaAUltimaPosicao();
-            return false;
-        }
-        return true;       
     }
     
     public boolean moveUp() {

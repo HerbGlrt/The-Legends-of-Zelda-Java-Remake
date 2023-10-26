@@ -1,6 +1,7 @@
 package Modelo;
 
 import Auxiliar.Consts;
+import Controler.ControleDeJogo;
 import Auxiliar.Desenho;
 import Controler.Tela;
 import auxiliar.Posicao;
@@ -44,7 +45,19 @@ public abstract class Personagem implements Serializable {
         g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
         iImage = new ImageIcon(bi);    
     } 
-
+    
+    public boolean validaPosicao(){
+        if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
+            this.voltaAUltimaPosicao();
+            return false;
+        }
+        return true;       
+    }
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
+    }
+        
     public boolean getsIsProjetil() {
         return isProjetil;
     }

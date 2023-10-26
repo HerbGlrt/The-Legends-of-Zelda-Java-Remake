@@ -13,6 +13,7 @@ public class Fase {
         this.setMatrizStrings(matriz);
                 if(getMatrizStrings(i,j) != null){
                 parede[i][j] = new Estatico(getMatrizStrings(i,j));
+                if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
                 parede[i][j].setPosicao(i,j);
             }
         return parede[i][j];
