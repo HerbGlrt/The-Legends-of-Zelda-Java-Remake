@@ -52,7 +52,7 @@ public class Hero extends Personagem implements Serializable{
         }
     }
     
-    public void autoDesenho(int i){
+    public void autoDesenho(int i){ // Função que desenha a espada para ataque à distância
         super.autoDesenho();
         if (i == 0){
             Projetil espada = new Projetil("espadaCima.png",0);
@@ -82,22 +82,34 @@ public class Hero extends Personagem implements Serializable{
         }
     }
     
-    public void espada(int obj){
+    public void espada(int obj) throws IOException{    //Função para decidir qual ataque o link fará
         switch (obj){
             case 0:{ // UP
+                if(getVida() == 3){
                 autoDesenho(0);
+                this.setDesenho("linkAtkC1.png");
+                }
                 break;
             }
             case 1:{ // RIGHT
+                if(getVida() == 3){
                 autoDesenho(1);
+                this.setDesenho("linkAtkD1.png");
+                }
                 break;
             }
             case 2:{ // DOWN
+                if(getVida() == 3){
                 autoDesenho(2);
+                this.setDesenho("linkAtkB1.png");
+                }
                 break;
             }
             case 3:{ // LEFT
+                if(getVida() == 3){
                 autoDesenho(3);
+                this.setDesenho("linkAtkE1.png");
+                }
                 break;
             }
             default:
