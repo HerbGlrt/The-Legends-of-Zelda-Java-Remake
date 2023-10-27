@@ -35,11 +35,11 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import javax.swing.JButton;
 
-
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
+    private ArrayList<Personagem> faseCentral;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int constDelay = 1;
@@ -49,11 +49,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Tela() {
         Desenho.setCenario(this);
         initComponents();
-        this.addMouseListener(this); /*mouse*/
+        this.addMouseListener(this);
+        /*mouse*/
 
-        this.addKeyListener(this);   /*teclado*/
-        /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
-        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right, (Consts.RES-4) * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+        this.addKeyListener(this);
+        /*teclado*/
+ /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
+        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right, (Consts.RES - 4) * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         faseAtual = new ArrayList<Personagem>();
 
@@ -62,8 +64,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hero.setPosicao(5, 5);
         this.addPersonagem(hero);
     }
-    
-    public void addInimigos(){
+
+    public void addInimigos() {
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
         bBichinhoH.setPosicao(8, 3);
         this.addPersonagem(bBichinhoH);
@@ -72,10 +74,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         bV.setPosicao(9, 3);
         this.addPersonagem(bV);
     }
-    
-    public boolean ehPosicaoValida(Posicao p){
+
+    public boolean ehPosicaoValida(Posicao p) {
         return cj.ehPosicaoValida(this.faseAtual, p);
     }
+
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
     }
@@ -84,14 +87,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         faseAtual.remove(umPersonagem);
     }
 
-    public Graphics getGraphicsBuffer(){
+    public Graphics getGraphicsBuffer() {
         return g2;
     }
+
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
-        /*************Desenha cenário de fundo**************/
+        /**
+         * ***********Desenha cenário de fundo*************
+         */
         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 try {
@@ -111,25 +117,24 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
-
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
         }
-        if(nivel == 0){
-            for(int i = 0; i < 16; i++){
-                for(int j = 0; j < 16; j++){
-                    if(Fase1.getValor(i, j) != null){
-                    Fase f = new Fase();
-                    this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
-                        }
+        if (nivel == 0) {
+            for (int i = 0; i < 16; i++) {
+                for (int j = 0; j < 16; j++) {
+                    if (Fase1.getValor(i, j) != null) {
+                        Fase f = new Fase();
+                        this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
                     }
                 }
-                addInimigos();
-                nivel++;
             }
-        if(idelay < 20){
+            addInimigos();
+            nivel++;
+        }
+        if (idelay < 20) {
             idelay++;
         }
     }
@@ -143,52 +148,56 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.PERIOD);
     }
-    
+
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_A){
+        if (e.getKeyCode() == KeyEvent.VK_A) {
             try {
                 hero.espada(hero.getOlhando());
                 idelay = constDelay;
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else if(e.getKeyCode() == KeyEvent.VK_C){
-            this.faseAtual.clear();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay){
-           idelay = 0;
-           hero.setOlhando(0);
-           hero.moveUp();
-        }else if(e.getKeyCode() == KeyEvent.VK_DOWN && idelay >= constDelay){
+        } else if (e.getKeyCode() == KeyEvent.VK_F) {
+            faseCentral = faseAtual;
+            ArrayList<Personagem> fase = new ArrayList<Personagem>();
+            fase.add(hero);
+            Octorok bV = new Octorok("octorok.png");
+            bV.setPosicao(9, 3);
+            fase.add(bV);
+            faseAtual = fase;
+        } else if (e.getKeyCode() == KeyEvent.VK_G) {
+            faseAtual = faseCentral;
+        }else if (e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay) {
+            idelay = 0;
+            hero.setOlhando(0);
+            hero.moveUp();
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(2);
             hero.moveDown();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_LEFT && idelay >= constDelay){
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(3);
             hero.moveLeft();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_RIGHT && idelay >= constDelay){
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(1);
             hero.moveRight();
         }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
     }
-        //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
-    
+    //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
 
     public void mousePressed(MouseEvent e) {
         /* Clique do mouse desligado*/
-         int x = e.getX();
-         int y = e.getY();
-     
-         this.setTitle("X: "+ x + ", Y: " + y +
-         " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
-        
-         this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
-         
+        int x = e.getX();
+        int y = e.getY();
+
+        this.setTitle("X: " + x + ", Y: " + y
+                + " -> Cell: " + (y / Consts.CELL_SIDE) + ", " + (x / Consts.CELL_SIDE));
+
+        this.hero.getPosicao().setPosicao(y / Consts.CELL_SIDE, x / Consts.CELL_SIDE);
+
         repaint();
     }
 
