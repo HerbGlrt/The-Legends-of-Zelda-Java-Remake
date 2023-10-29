@@ -24,10 +24,15 @@ public class Octorok extends Personagem implements Serializable{
         this.iContaIntervalos++;
         if(this.iContaIntervalos == Consts.TIMER){
             this.iContaIntervalos = 0;
-            Projetil f = new Projetil("rok.png", 1);
+            Projetil f = new Projetil("rok.png", 1, 1);
             f.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
             Desenho.acessoATelaDoJogo().addPersonagem(f);
         }
 
-    }    
+    }
+    
+    public void autoDesenhoEstatico(){
+        super.autoDesenho();
+    }
+    
 }

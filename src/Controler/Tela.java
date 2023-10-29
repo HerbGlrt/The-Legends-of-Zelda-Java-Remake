@@ -2,6 +2,7 @@ package Controler;
 
 import Fases.Fase;
 import Fases.Fase1;
+import Fases.Fase2;
 import Modelo.Personagem;
 import Modelo.Octorok;
 import Modelo.Hero;
@@ -45,6 +46,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private int constDelay = 1;
     private int idelay = constDelay;
     private int nivel = 0;
+    private int tem_espada = 0; // cooldown da espada
 
     public Tela() {
         Desenho.setCenario(this);
@@ -92,6 +94,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void paint(Graphics gOld) {
+        int cont_aux = 1;
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
@@ -112,6 +115,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
+                if (idelay == 2 && hero.getVida() <= 2 && tem_espada == 1 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                    Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                        Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                    }
+                    tem_espada = 0;
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -137,6 +147,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (idelay < 20) {
             idelay++;
         }
+        System.out.println(idelay);
+        
+        
     }
 
     public void go() {
@@ -152,11 +165,20 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             try {
-                hero.espada(hero.getOlhando());
+                if (hero.getVida() == 3){
+                    hero.espada(hero.getOlhando(), 0);
+                }
+                else{
+                    if (tem_espada == 0){
+                        hero.espada(hero.getOlhando(), 1);
+                    }
+                }
                 idelay = constDelay;
+                
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
+            tem_espada = 1;
         } else if (e.getKeyCode() == KeyEvent.VK_F) {
             faseCentral = faseAtual;
             ArrayList<Personagem> fase = new ArrayList<Personagem>();
@@ -171,18 +193,34 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(0);
             hero.moveUp();
+            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                tem_espada = 0;
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(2);
             hero.moveDown();
+            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                tem_espada = 0;
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(3);
             hero.moveLeft();
+            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                tem_espada = 0;
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(1);
             hero.moveRight();
+            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                tem_espada = 0;
+            }
         }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
     }

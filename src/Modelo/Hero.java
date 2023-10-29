@@ -51,61 +51,76 @@ public class Hero extends Personagem implements Serializable{
             return 1;
         }
     }
-    
-    public void autoDesenho(int i){ // Função que desenha a espada para ataque à distância
+    // i = olhando, j = 3 vidas ou menos
+    public void autoDesenho(int i, int j){ // Função que desenha a espada para ataque à distância
         super.autoDesenho();
-        if (i == 0 && (pPosicao.getLinha()-1) > 0){
-            Projetil espada = new Projetil("espadaCima.png",0);
+        if (j == 0){ // (Se link tem 3 vidas)
+            if (i == 0 && (pPosicao.getLinha()-1) > 0){
+            Projetil espada = new Projetil("espadaCima.png",0, 1);
             espada.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }else if (i == 1 && (pPosicao.getColuna()+1) < Auxiliar.Consts.RES){
-            Projetil espada = new Projetil("espadaDir.png",1);
+            Projetil espada = new Projetil("espadaDir.png",1, 1);
             espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }else if(i == 2 && (pPosicao.getLinha()+1) < Auxiliar.Consts.RES){
-                Projetil espada = new Projetil("espadaBaixo.png",2);
+                Projetil espada = new Projetil("espadaBaixo.png",2, 1);
                 espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
                 Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }else if (i == 3 && (pPosicao.getColuna()-1) > 0){
-            Projetil espada = new Projetil("espadaEsq.png",3);
+            Projetil espada = new Projetil("espadaEsq.png",3, 1);
             espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }
+        }
+        else{ // Se link tem menos de 3 vidas
+            if (i == 0 && (pPosicao.getLinha()-1) > 0){
+            Projetil espada = new Projetil("espadaCima.png",0, 0);
+            espada.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }else if (i == 1 && (pPosicao.getColuna()+1) < Auxiliar.Consts.RES){
+            Projetil espada = new Projetil("espadaDir.png",1, 0);
+            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }else if(i == 2 && (pPosicao.getLinha()+1) < Auxiliar.Consts.RES){
+                Projetil espada = new Projetil("espadaBaixo.png",2, 0);
+                espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
+                Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }else if (i == 3 && (pPosicao.getColuna()-1) > 0){
+            Projetil espada = new Projetil("espadaEsq.png",3, 0);
+            espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
+        }    
+        }
+        
     }
     
-    public void espada(int obj) throws IOException{    //Função para decidir qual ataque o link fará
-        switch (obj){
+    
+    public void espada(int i, int aux) throws IOException{    //Função para decidir qual ataque o link fará
+            switch (i){ // i = olhando
             case 0:{ // UP
-                if(getVida() == 3){
-                autoDesenho(obj);
+                autoDesenho(i, aux);
                 this.setDesenho("linkAtkC1.png");
-                }
                 break;
             }
             case 1:{ // RIGHT
-                if(getVida() == 3){
-                autoDesenho(obj);
+                autoDesenho(i, aux);
                 this.setDesenho("linkAtkD1.png");
-                }
                 break;
             }
             case 2:{ // DOWN
-                if(getVida() == 3){
-                autoDesenho(obj);
+                autoDesenho(i, aux);
                 this.setDesenho("linkAtkB1.png");
-                }
                 break;
             }
             case 3:{ // LEFT
-                if(getVida() == 3){
-                autoDesenho(obj);
+                autoDesenho(i, aux);
                 this.setDesenho("linkAtkE1.png");
-                }
                 break;
             }
             default:
                 break;
-        }
+            }
     }
     
     public boolean moveUp() {
