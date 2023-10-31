@@ -19,7 +19,6 @@ public class Hero extends Personagem implements Serializable{
         super(sNomeImagePNG);
     }
 
-
     public void setOlhando(int olhando) {
         this.olhando = olhando;
     }
@@ -67,6 +66,7 @@ public class Hero extends Personagem implements Serializable{
                 Projetil espada = new Projetil("espadaBaixo.png",2, 1);
                 espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
                 Desenho.acessoATelaDoJogo().addPersonagem(espada);
+
         }else if (i == 3 && (pPosicao.getColuna()-1) > 0){
             Projetil espada = new Projetil("espadaEsq.png",3, 1);
             espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);

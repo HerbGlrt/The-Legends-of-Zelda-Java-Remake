@@ -69,11 +69,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void addInimigos() {
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH.setPosicao(8, 3);
+        bBichinhoH.setPosicao(8, 4);
         this.addPersonagem(bBichinhoH);
 
         Octorok bV = new Octorok("octorok.png");
-        bV.setPosicao(9, 3);
+        bV.setPosicao(9, 4);
         this.addPersonagem(bV);
     }
 
@@ -115,7 +115,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
-                if (idelay == 2 && hero.getVida() <= 2 && tem_espada == 1 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                if (idelay == 6 && tem_espada == 1 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                     Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
@@ -165,7 +165,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             try {
-                if (hero.getVida() == 3){
+                if (tem_espada == 0 && hero.getVida() == 3){
                     hero.espada(hero.getOlhando(), 0);
                 }
                 else{
