@@ -21,7 +21,7 @@ public abstract class Personagem implements Serializable {
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
-    protected int olhando;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
+    protected int olhando = 2;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
     protected boolean isProjetil = false;   // O personagem é um projétil?
     protected int isCoracao = 0;   // O personagem é um coração? (0 = Não, 1 = Coração cheio, 2 = Coração vazio)
     protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
