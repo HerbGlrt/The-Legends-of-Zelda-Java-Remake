@@ -23,6 +23,8 @@ public abstract class Personagem implements Serializable {
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected int olhando = 2;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
     protected boolean isProjetil = false;   // O personagem é um projétil?
+    protected boolean isEspada = false;   // O personagem é um projétil?
+    public boolean temEspada = false; // cooldown da espada
     protected int isCoracao = 0;   // O personagem é um coração? (0 = Não, 1 = Coração cheio, 2 = Coração vazio)
     protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
     protected int vida = 3; // Vida do personagem
@@ -53,6 +55,14 @@ public abstract class Personagem implements Serializable {
         }
         return true;       
     }
+
+    public boolean getTemEspada() {
+        return temEspada;
+    }
+
+    public void setTemEspada(boolean temEspada) {
+        this.temEspada = temEspada;
+    }
     
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();
@@ -74,6 +84,14 @@ public abstract class Personagem implements Serializable {
         this.isCoracao = isCoracao;
     }
 
+    public boolean getIsEspada() {
+        return isEspada;
+    }
+
+    public void setIsEspada(boolean isEspada) {
+        this.isEspada = isEspada;
+    }
+    
     public int getVida() {
         return vida;
     }

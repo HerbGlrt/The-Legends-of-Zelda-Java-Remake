@@ -46,7 +46,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private int constDelay = 1;
     private int idelay = constDelay;
     private int nivel = 0;
-    private int tem_espada = 0; // cooldown da espada
 
     public Tela() {
         Desenho.setCenario(this);
@@ -69,11 +68,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void addInimigos() {
         BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH.setPosicao(8, 4);
+        bBichinhoH.setPosicao(8, 5);
         this.addPersonagem(bBichinhoH);
 
         Octorok bV = new Octorok("octorok.png");
-        bV.setPosicao(9, 4);
+        bV.setPosicao(9, 5);
         this.addPersonagem(bV);
     }
 
@@ -115,12 +114,19 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
-                if (idelay == 6 && tem_espada == 1 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
-                    Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                if (idelay == 2 && hero.getVida() <= 2 && hero.getTemEspada()){
                     if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     }
-                    tem_espada = 0;
+                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                        Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                    }
+                    hero.setTemEspada(false);
+                    faseAtual.get(7).setDesenho("espadaHUD.png");
+                }
+                if (idelay == 4 && hero.getVida() == 3){
+                    hero.setTemEspada(false);
+                    faseAtual.get(7).setDesenho("espadaHUD.png");
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,20 +171,20 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             try {
-                if (tem_espada == 0 && hero.getVida() == 3){
-                    hero.espada(hero.getOlhando(), 0);
-                }
-                else{
-                    if (tem_espada == 0){
+                if (hero.getTemEspada() == false){
+                    if (hero.getVida() == 3){
+                        hero.espada(hero.getOlhando(), 0);
+                    } else{
                         hero.espada(hero.getOlhando(), 1);
                     }
+                    faseAtual.get(7).setDesenho("espadaHUDCinza.png");
                 }
                 idelay = constDelay;
                 
             } catch (IOException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
-            tem_espada = 1;
+            hero.setTemEspada(true);
         } else if (e.getKeyCode() == KeyEvent.VK_F) {
             faseCentral = faseAtual;
             ArrayList<Personagem> fase = new ArrayList<Personagem>();
@@ -193,33 +199,33 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(0);
             hero.moveUp();
-            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
-                tem_espada = 0;
+                hero.setTemEspada(false);
             }
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(2);
             hero.moveDown();
-            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
-                tem_espada = 0;
+                hero.setTemEspada(false);
             }
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(3);
             hero.moveLeft();
-            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
-                tem_espada = 0;
+                hero.setTemEspada(false);
             }
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(1);
             hero.moveRight();
-            if (tem_espada == 1 && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
-                tem_espada = 0;
+                hero.setTemEspada(false);
             }
         }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));

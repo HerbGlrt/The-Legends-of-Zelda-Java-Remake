@@ -21,13 +21,21 @@ public class ControleDeJogo {
     
     public void processaTudo(ArrayList<Personagem> umaFase) throws IOException{
         Hero hero = (Hero)umaFase.get(0);
-        Personagem espada = umaFase.get(umaFase.size() - 1);    // temp será o último personagem criado, possivelmente uma epsada do heroi
+        Projetil espada = null;
         Personagem pIesimoPersonagem;
+         for(int i = 1; i < umaFase.size(); i++){
+             pIesimoPersonagem = umaFase.get(i);
+             if(pIesimoPersonagem.getIsEspada()){
+                espada = (Projetil) pIesimoPersonagem;    // se o pIesimoPersonagem for do tipo espada, salva ele como espada
+            }
+         }
         for(int i = 1; i < umaFase.size(); i++){
             pIesimoPersonagem = umaFase.get(i);
-            if(espada.getsIsProjetil() == true && pIesimoPersonagem.getsIsProjetil() == false && espada.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getbMortal() == true){
+            if(espada != null && hero.getTemEspada() && pIesimoPersonagem.getIsEspada() == false  && pIesimoPersonagem.getbMortal() == true){
+                if(espada.getPosicao().igual(pIesimoPersonagem.getPosicao())){
                         umaFase.remove(pIesimoPersonagem);
                         umaFase.remove(espada);
+                }
             }
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao())){
                 if (hero.vida(umaFase) == 0){

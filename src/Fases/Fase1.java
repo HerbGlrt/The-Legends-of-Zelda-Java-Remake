@@ -1,7 +1,7 @@
 package Fases;
 
 public  class Fase1{
-    static String[][] matriz1 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
+    static String[][] matriz1 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "espadaHUD.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 1
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "preto.png", "arbusto.png", "arbustoSepDir.png", null,  "arbustoSepEsq.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 2
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbustoSepDir.png", null, null, null, null, null, null, null, "arbustoSepEsq.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 3

@@ -57,19 +57,23 @@ public class Hero extends Personagem implements Serializable{
             if (i == 0 && (pPosicao.getLinha()-1) > 0){
             Projetil espada = new Projetil("espadaCima.png",0, 1);
             espada.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
+            espada.setIsEspada(true);
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }else if (i == 1 && (pPosicao.getColuna()+1) < Auxiliar.Consts.RES){
             Projetil espada = new Projetil("espadaDir.png",1, 1);
             espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            espada.setIsEspada(true);
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }else if(i == 2 && (pPosicao.getLinha()+1) < Auxiliar.Consts.RES){
-                Projetil espada = new Projetil("espadaBaixo.png",2, 1);
-                espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
-                Desenho.acessoATelaDoJogo().addPersonagem(espada);
+            Projetil espada = new Projetil("espadaBaixo.png",2, 1);
+            espada.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
+            espada.setIsEspada(true);
+            Desenho.acessoATelaDoJogo().addPersonagem(espada);
 
         }else if (i == 3 && (pPosicao.getColuna()-1) > 0){
             Projetil espada = new Projetil("espadaEsq.png",3, 1);
             espada.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
+            espada.setIsEspada(true);
             Desenho.acessoATelaDoJogo().addPersonagem(espada);
         }
         }
@@ -97,6 +101,7 @@ public class Hero extends Personagem implements Serializable{
     
     
     public void espada(int i, int aux) throws IOException{    //Função para decidir qual ataque o link fará
+            setTemEspada(true);
             switch (i){ // i = olhando
             case 0:{ // UP
                 autoDesenho(i, aux);
