@@ -153,9 +153,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (idelay < 20) {
             idelay++;
         }
-        System.out.println(idelay);
-        
-        
     }
 
     public void go() {
