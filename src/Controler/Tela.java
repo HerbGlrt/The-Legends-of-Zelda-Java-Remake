@@ -90,22 +90,27 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if(tp.getDestino() == 'a' || tp.getDestino() == 'i' || tp.getDestino() == 'h'){ // Analisa qual a fase a ser criada
             Fase.setMatrizStrings(Fase1.getMatrizStrings());
             Fase.setArrayTeleports(Fase1.getArrayTeleports());
+            Fase.setArrayInimigos(Fase1.getArrayInimigos());
             fundo = 0;
         }else if(tp.getDestino() == 'g' || tp.getDestino() == 'f'){
             Fase.setMatrizStrings(Fase2.getMatrizStrings());
             Fase.setArrayTeleports(Fase2.getArrayTeleports());
+            Fase.setArrayInimigos(Fase2.getArrayInimigos());
             fundo = 0;        
         }else if(tp.getDestino() == 'e' || tp.getDestino() == 'd'){
             Fase.setMatrizStrings(Fase3.getMatrizStrings());
             Fase.setArrayTeleports(Fase3.getArrayTeleports());
+            Fase.setArrayInimigos(Fase3.getArrayInimigos());
             fundo = 0;        
         }else if(tp.getDestino() == 'c' || tp.getDestino() == 'b'){
             Fase.setMatrizStrings(Fase4.getMatrizStrings());
             Fase.setArrayTeleports(Fase4.getArrayTeleports());
+            Fase.setArrayInimigos(Fase4.getArrayInimigos());
             fundo = 0;        
         }else if(tp.getDestino() == 'j'){
             Fase.setMatrizStrings(FaseBonus.getMatrizStrings());
             Fase.setArrayTeleports(FaseBonus.getArrayTeleports());
+            Fase.setArrayInimigos(FaseBonus.getArrayInimigos());
             fundo = 1;        
         }
         hero.setPosicao(tp.getPosXDest(), tp.getPosYDest());    // Seta a posicao do heroi na nova fase
@@ -154,12 +159,33 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             teleporter.setPosicao((int)Fase.getElemArrayTeleport(pos + 5), (int)Fase.getElemArrayTeleport(pos + 6));
             addPersonagem(teleporter);
         }            
-//Adicionar os inimigos;
+        
+        for(int i = 0; i < Fase.getElemArrayInimigos(0); i++){
+            int pos = i * 3;
+            switch(Fase.getElemArrayInimigos(pos + 1)){
+                case 0:
+                    Octorok inimigo0 = new Octorok("octorok.png");
+                    inimigo0.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                     faseAtual.add(inimigo0);
+                    break;
+                case 1:
+                    ZigueZague inimigo1 = new ZigueZague("octorok.png");
+                    inimigo1.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                    faseAtual.add(inimigo1);
+                    break;
+                case 2:
+                    BichinhoVaiVemHorizontal inimigo2 = new BichinhoVaiVemHorizontal("octorok.png");
+                    inimigo2.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                    faseAtual.add(inimigo2);
+                    break;
+            }
+        }
     }
     
     public void apagaTudo() {
         Fase.setMatrizStrings(null);  // Define a matriz de strings da fase como sendo nula
         Fase.setArrayTeleports(null);   // Define o array de teleports da fase como sendo nulo
+        Fase.setArrayInimigos(null);  // Define o array de inimigos da fase como sendo nulo
         for(int i = 0; i < Consts.RES; i++){
             for(int j = 0; j < Consts.RES; j++){
                 parede[i][j] = null;    // Percorre toda a matriz de objetos da fase, definindo objeto a objeto como nulo

@@ -15,10 +15,15 @@
         <group>
             <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/Fase.java</file>
             <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Controler/Tela.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Projetil.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Hero.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Auxiliar/Desenho.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/Fase4.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Octorok.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Modelo/Inimigos.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/Fase3.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Auxiliar/Posicao.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/Fase2.java</file>
             <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/Fase1.java</file>
-            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Controler/ControleDeJogo.java</file>
+            <file>file:/C:/Users/Henrique%20Araujo/Desktop/USP/POO/PrototipoProjetoPOO/src/Fases/FaseBonus.java</file>
         </group>
     </open-files>
 </project-private>

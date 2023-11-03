@@ -10,8 +10,9 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.security.SecureRandom;
 
-public class BichinhoVaiVemHorizontal extends Personagem  implements Serializable{
+public class BichinhoVaiVemHorizontal extends Inimigos  implements Serializable{
     private boolean bRight;
 
     public BichinhoVaiVemHorizontal(String sNomeImagePNG) {
@@ -21,14 +22,33 @@ public class BichinhoVaiVemHorizontal extends Personagem  implements Serializabl
         this.setbTransponivel(true);
     }
     public void autoDesenho(){
-        if(bRight)
-            //this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);
-            this.pPosicao.moveRight();
-        else
-            //this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()-1);           
-            this.pPosicao.moveLeft();
-
+        SecureRandom rand = new SecureRandom();
+        
+        int direcao = rand.nextInt(8);
+        
         super.autoDesenho();
-        bRight = !bRight;
+        
+        switch (direcao){
+            case 0:
+                //this.pPosicao.moveUp();
+                this.moveUp();
+            case 1:
+                this.moveDown();
+            case 2:
+                this.moveLeft();
+            case 3:
+                this.moveRight();
+            case 4:
+                this.moveUp();
+            case 5:
+                this.moveDown();
+            case 6:
+                this.moveLeft();
+            case 7:
+                this.moveRight();
+            default:
+                this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna());
+        }
+        this.validaPosicao();
     }
 }

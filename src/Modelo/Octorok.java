@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class Octorok extends Personagem implements Serializable{
+public class Octorok extends Inimigos implements Serializable{
      private int iContaIntervalos;
     
     public Octorok(String sNomeImagePNG) {

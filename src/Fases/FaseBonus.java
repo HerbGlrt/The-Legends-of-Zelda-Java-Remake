@@ -20,10 +20,16 @@ public class FaseBonus {
 
         };
    
+       private static int[] inimigosBonus = {0};
+
     private static char[] teleportsBonus = {1, 'j', 'i', 3, 4, 11, 7};
 
     public static String[][] getMatrizStrings() {
         return matrizBonus;
+    }
+    
+    public static int[] getArrayInimigos() {
+        return inimigosBonus;
     }
     
     public static char[] getArrayTeleports() {
