@@ -20,7 +20,7 @@ public class Fase1{
 
         };
     
-    private static char[] teleports1 = {3, 'a', 'b', 14, 6, 0, 6, 'i', 'j', 7, 10, 4, 2, 'h', 'g', 7, 10, 7, 1};
+    private static char[] teleports1 = {3, 'a', 'b', 6, 14, 6, 0, 'i', 'j', 10, 7, 2, 4, 'h', 'g', 10, 7, 1, 7};
     
     public static String[][] getMatrizStrings() {
         return matriz1;

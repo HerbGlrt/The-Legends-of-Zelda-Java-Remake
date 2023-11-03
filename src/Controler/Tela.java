@@ -105,22 +105,22 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
          for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
-                    if(Fase.getElemMatrizStrings(i, j) != null){
-                        parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
-                        if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
-                        parede[i][j].setPosicao(i,j);
-                        addPersonagem(parede[i][j]);
-                    }
+                if(Fase.getElemMatrizStrings(i, j) != null){
+                    parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
+                    if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
+                    parede[i][j].setPosicao(i,j);
+                    addPersonagem(parede[i][j]);
                 }
-            }            
-            for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
-                    int pos = i * 6;
-                Teleport teleporter = new Teleport(Fase.getElemArrayTeleport(pos + 1), Fase.getElemArrayTeleport(pos + 2), (int)Fase.getElemArrayTeleport(pos + 3), (int)Fase.getElemArrayTeleport(pos + 4));
-                teleporter.setPosicao((int)Fase.getElemArrayTeleport(pos + 5), (int)Fase.getElemArrayTeleport(pos + 6));
-                addPersonagem(teleporter);
-                }
-            //ArrayTeleport = {3, 'a', 'b', 14, 6, 0, 6, 'i', 'j', 7, 10, 4, 2, 'h', 'g', 7, 10, 7, 1};
-            //Adicionar os inimigos;
+            }
+        }
+         
+        for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
+            int pos = i * 6;
+            Teleport teleporter = new Teleport(Fase.getElemArrayTeleport(pos + 1), Fase.getElemArrayTeleport(pos + 2), (int)Fase.getElemArrayTeleport(pos + 3), (int)Fase.getElemArrayTeleport(pos + 4));
+            teleporter.setPosicao((int)Fase.getElemArrayTeleport(pos + 5), (int)Fase.getElemArrayTeleport(pos + 6));
+            addPersonagem(teleporter);
+        }            
+//Adicionar os inimigos;
     }
     
     public void apagaTudo() {
@@ -194,7 +194,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.PERIOD);
         
-        Teleport tp = new Teleport('b', 'a', 6, 1);
+        //Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
+        //Teleport tp = new Teleport('h', 'g', 10, 7); // Fase 2
+        //Teleport tp = new Teleport('f', 'e', 6, 14); // Fase 3
+        //Teleport tp = new Teleport('d', 'c', 2, 13); // Fase 4
+        Teleport tp = new Teleport('i', 'j', 10, 7); // Fase Bonus
         criaFase(tp);   // Cria a primeira fase
     }
 

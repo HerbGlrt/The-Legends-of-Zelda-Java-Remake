@@ -10,7 +10,7 @@ public class Teleport extends Personagem implements Serializable{
     private int posYDest;
     
     public Teleport(char key, char destino, int posXDest, int posYDest) {
-        super("transparente.png");
+        super("rok.png");
         this.setbMortal(false);
         this.setbTransponivel(true);
         this.setKey(key);
