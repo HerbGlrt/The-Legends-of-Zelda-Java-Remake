@@ -8,7 +8,6 @@ public class Teleport extends Personagem implements Serializable{
     private char destino;
     private int posXDest;
     private int posYDest;
-    protected Posicao pPosicao;
     
     public Teleport(char key, char destino, int posXDest, int posYDest) {
         super("transparente.png");
@@ -19,11 +18,7 @@ public class Teleport extends Personagem implements Serializable{
         this.setPosXDest(posXDest);
         this.setPosYDest(posYDest);
     }
-    
-    public boolean setPosicao(int linha, int coluna) {
-        return pPosicao.setPosicao(linha, coluna);
-    }
-        
+
     public char getKey() {
         return key;
     }

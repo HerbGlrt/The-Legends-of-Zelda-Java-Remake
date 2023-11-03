@@ -109,16 +109,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                         parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
                         if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
                         parede[i][j].setPosicao(i,j);
-                        faseAtual.add(parede[i][j]);
+                        addPersonagem(parede[i][j]);
                     }
                 }
             }            
-            /*for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
-                int pos = i * 6;
+            for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
+                    int pos = i * 6;
                 Teleport teleporter = new Teleport(Fase.getElemArrayTeleport(pos + 1), Fase.getElemArrayTeleport(pos + 2), (int)Fase.getElemArrayTeleport(pos + 3), (int)Fase.getElemArrayTeleport(pos + 4));
-                teleporter.setPosicao(Fase.getElemArrayTeleport(pos + 5), Fase.getElemArrayTeleport(pos + 6));
-                    }*/
-            
+                teleporter.setPosicao((int)Fase.getElemArrayTeleport(pos + 5), (int)Fase.getElemArrayTeleport(pos + 6));
+                addPersonagem(teleporter);
+                }
+            //ArrayTeleport = {3, 'a', 'b', 14, 6, 0, 6, 'i', 'j', 7, 10, 4, 2, 'h', 'g', 7, 10, 7, 1};
             //Adicionar os inimigos;
     }
     
@@ -134,7 +135,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
     }
 
-    public void paint(Graphics gOld) {
+       public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
@@ -150,11 +151,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        if (!this.faseAtual.isEmpty()) { 
+        }
+        if (!this.faseAtual.isEmpty()) {
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
                 if (idelay == 2 && hero.getVida() <= 2 && hero.getTemEspada()){
+                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                        Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
+                    }
                     if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     }
@@ -178,7 +183,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (idelay < 20) {
             idelay++;
         }
-    }
     }
 
     public void go() {

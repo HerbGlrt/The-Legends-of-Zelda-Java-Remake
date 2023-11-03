@@ -12,8 +12,8 @@ public class Fase {
         return arrayTeleports;
     }
 
-    public static void setArrayTeleports(char[] matrizTeleports) {
-        Fase.arrayTeleports = matrizTeleports;
+    public static void setArrayTeleports(char[] arrayTeleports) {
+        Fase.arrayTeleports = arrayTeleports;
     }
     
     public static char getElemArrayTeleport(int i) {
