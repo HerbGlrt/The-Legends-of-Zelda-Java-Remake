@@ -3,6 +3,7 @@ package Controler;
 import Modelo.Personagem;
 import Modelo.Hero;
 import Modelo.Projetil;
+import Modelo.Teleport;
 import auxiliar.Posicao;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,15 @@ public class ControleDeJogo {
             }
         }
     }
+    public Teleport tp = null;  // Variavel que mostra em qual teleport o hero subiu
+    public Teleport getTp() {
+        return tp;
+    }
+
+    public void setTp(Teleport tp) {
+        this.tp = tp;
+    }
+    
     
     public void processaTudo(ArrayList<Personagem> umaFase) throws IOException{
         Hero hero = (Hero)umaFase.get(0);
@@ -37,14 +47,17 @@ public class ControleDeJogo {
                         umaFase.remove(espada);
                 }
             }
-            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao())){
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport() == false){
                 if (hero.vida(umaFase) == 0){
                     umaFase.remove(hero);
                 }
-                if(pIesimoPersonagem.getsIsProjetil() == true){
+                if(pIesimoPersonagem.getsIsProjetil()){
                     umaFase.remove(pIesimoPersonagem);
                 }
             }
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport()){
+                setTp((Teleport)pIesimoPersonagem); // Se o hero subiu em algum teleport, será visto na paint e a fase trocada
+                }
         }              
     }
     

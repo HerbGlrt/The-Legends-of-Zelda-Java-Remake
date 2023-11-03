@@ -49,6 +49,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Graphics g2;
     private int constDelay = 1;
     private int idelay = constDelay;
+    private static int fundo = 0;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -84,27 +85,53 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer() {
         return g2;
     }
+    
     public void criaFase(Teleport tp){
         if(tp.getDestino() == 'a' || tp.getDestino() == 'i' || tp.getDestino() == 'h'){ // Analisa qual a fase a ser criada
             Fase.setMatrizStrings(Fase1.getMatrizStrings());
             Fase.setArrayTeleports(Fase1.getArrayTeleports());
+            fundo = 0;
         }else if(tp.getDestino() == 'g' || tp.getDestino() == 'f'){
             Fase.setMatrizStrings(Fase2.getMatrizStrings());
             Fase.setArrayTeleports(Fase2.getArrayTeleports());
+            fundo = 0;        
         }else if(tp.getDestino() == 'e' || tp.getDestino() == 'd'){
             Fase.setMatrizStrings(Fase3.getMatrizStrings());
             Fase.setArrayTeleports(Fase3.getArrayTeleports());
+            fundo = 0;        
         }else if(tp.getDestino() == 'c' || tp.getDestino() == 'b'){
             Fase.setMatrizStrings(Fase4.getMatrizStrings());
             Fase.setArrayTeleports(Fase4.getArrayTeleports());
+            fundo = 0;        
         }else if(tp.getDestino() == 'j'){
             Fase.setMatrizStrings(FaseBonus.getMatrizStrings());
             Fase.setArrayTeleports(FaseBonus.getArrayTeleports());
+            fundo = 1;        
         }
         hero.setPosicao(tp.getPosXDest(), tp.getPosYDest());    // Seta a posicao do heroi na nova fase
+        
+        for(int i = 0; i < Consts.RES; i++){
+            Estatico cabecalho = new Estatico("preto.png");
+            if(i == 0 || i == 2 || i == 4){
+                try {
+                    cabecalho.setIsCoracao(1);  // Se for um sprite de coração, seta isCoracao
+                    cabecalho.setDesenho("coracaoCheio.png");
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if(i == 6){
+                try {
+                    cabecalho.setDesenho("espadaHUD.png");
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            cabecalho.setPosicao(0, i);
+            addPersonagem(cabecalho);
+        }
 
-         for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
+         for (int i = 1; i < Consts.RES; i++) {
+            for (int j = 0; j < Consts.RES; j++) {
                 if(Fase.getElemMatrizStrings(i, j) != null){
                     parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
                     if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
@@ -117,6 +144,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
             int pos = i * 6;
             Teleport teleporter = new Teleport(Fase.getElemArrayTeleport(pos + 1), Fase.getElemArrayTeleport(pos + 2), (int)Fase.getElemArrayTeleport(pos + 3), (int)Fase.getElemArrayTeleport(pos + 4));
+            if(teleporter.getKey() == 'i'){
+                try {
+                    teleporter.setDesenho("preto.png");
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             teleporter.setPosicao((int)Fase.getElemArrayTeleport(pos + 5), (int)Fase.getElemArrayTeleport(pos + 6));
             addPersonagem(teleporter);
         }            
@@ -125,14 +159,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public void apagaTudo() {
         Fase.setMatrizStrings(null);  // Define a matriz de strings da fase como sendo nula
-        for(int i = 0; i < 16; i++){
-            for(int j = 0; j < 16; j++){
+        Fase.setArrayTeleports(null);   // Define o array de teleports da fase como sendo nulo
+        for(int i = 0; i < Consts.RES; i++){
+            for(int j = 0; j < Consts.RES; j++){
                 parede[i][j] = null;    // Percorre toda a matriz de objetos da fase, definindo objeto a objeto como nulo
             }
         }
-        for(int i = 1; i <= faseAtual.size(); i++){
-            faseAtual.remove(i);    // Apaga todos os elementos no vetor de personagens da fase, menos o hero
-        }
+        Hero h = (Hero)faseAtual.get(0);
+        faseAtual.clear();
+        faseAtual.add(h);
     }
 
        public void paint(Graphics gOld) {
@@ -145,8 +180,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 try {
-                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "areia.png");
-                    g2.drawImage(newImage, j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    if(fundo == 0){ // Variavel fundo decide se o cenário será de "areia" ou de "preto" dependendo de onde o hero esta
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "areia.png");
+                        g2.drawImage(newImage, j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }else {
+                        Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "preto.png");
+                        g2.drawImage(newImage, j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -183,6 +223,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (idelay < 20) {
             idelay++;
         }
+        if(cj.getTp() != null){
+            apagaTudo();
+            criaFase(cj.getTp());
+            cj.setTp(null);
+        }
     }
 
     public void go() {
@@ -193,12 +238,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         };
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.PERIOD);
-        
-        //Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
-        //Teleport tp = new Teleport('h', 'g', 10, 7); // Fase 2
-        //Teleport tp = new Teleport('f', 'e', 6, 14); // Fase 3
-        //Teleport tp = new Teleport('d', 'c', 2, 13); // Fase 4
-        Teleport tp = new Teleport('i', 'j', 10, 7); // Fase Bonus
+
+        Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
         criaFase(tp);   // Cria a primeira fase
     }
 
