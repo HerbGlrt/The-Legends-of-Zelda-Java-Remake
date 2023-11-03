@@ -1,7 +1,7 @@
 package Fases;
 
 public class Fase3 {
-    static String[][] matriz3 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
+    private static String[][] matriz3 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
                                 {"aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguaborda2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", }, // LINHA 1
                                 {"aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguaborda2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", }, // LINHA 2
                                 {"aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguacentro.png", "aguaborda2.png", null, null, null, null, null, null, null, "arbusto2.png"}, // LINHA 3
@@ -20,13 +20,13 @@ public class Fase3 {
 
         };
     
-    static char[] teleports3 = {2, 'd', 'c', 13, 2, 13, 11, 'e', 'f', 1, 6, 15, 6};
+    private static char[] teleports3 = {2, 'd', 'c', 13, 2, 13, 11, 'e', 'f', 1, 6, 15, 6};
 
-    static String[][] getMatrizStrings() {
+    public static String[][] getMatrizStrings() {
         return matriz3;
     }
     
-    static char[] getArrayTeleports() {
+    public static char[] getArrayTeleports() {
         return teleports3;
     }
 }

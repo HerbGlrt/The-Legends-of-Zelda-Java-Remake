@@ -1,7 +1,7 @@
 package Fases;
 
 public class Fase4 {
-    static String[][] matriz4 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
+    private static String[][] matriz4 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", null, null, "arbusto.png", "arbusto.png", }, // LINHA 1
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", null, null, "arbusto.png", "arbusto.png", }, // LINHA 2
                                 {"arbusto.png", null, null, null, null, null, null, null, null, null, null, null, null, null, "arbusto.png", "arbusto.png", }, // LINHA 3
@@ -20,13 +20,13 @@ public class Fase4 {
 
         };
     
-    static char[] teleports4 = {2, 'c', 'd', 13, 10, 13, 1, 'b', 'a', 1, 6, 15, 6};
+    private static char[] teleports4 = {2, 'c', 'd', 13, 10, 13, 1, 'b', 'a', 1, 6, 15, 6};
 
-    static String[][] getMatrizStrings() {
+    public static String[][] getMatrizStrings() {
         return matriz4;
     }
    
-    static char[] getArrayTeleports() {
+    public static char[] getArrayTeleports() {
         return teleports4;
     }
 }

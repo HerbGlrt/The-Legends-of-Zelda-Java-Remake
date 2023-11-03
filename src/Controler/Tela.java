@@ -8,6 +8,12 @@ import Modelo.Estatico;
 import Modelo.BichinhoVaiVemHorizontal;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
+import Fases.Fase1;
+import Fases.Fase2;
+import Fases.Fase3;
+import Fases.Fase4;
+import Fases.FaseBonus;
+import Modelo.Teleport;
 import Modelo.ZigueZague;
 import auxiliar.Posicao;
 import java.awt.FlowLayout;
@@ -38,11 +44,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
+    public Estatico[][] parede = new Estatico[16][16];
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int constDelay = 1;
     private int idelay = constDelay;
-    private int nivel = 0;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -57,19 +63,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         faseAtual = new ArrayList<Personagem>();
 
-        /*Cria faseAtual adiciona personagens*/
+        //Cria faseAtual adiciona personagens
         hero = new Hero("linkDown.png");
         this.addPersonagem(hero);
-    }
-
-    public void addInimigos() {
-        BichinhoVaiVemHorizontal bBichinhoH = new BichinhoVaiVemHorizontal("octorok.png");
-        bBichinhoH.setPosicao(8, 5);
-        this.addPersonagem(bBichinhoH);
-
-        Octorok bV = new Octorok("octorok.png");
-        bV.setPosicao(9, 5);
-        this.addPersonagem(bV);
+        hero.setPosicao(6,1);
     }
 
     public boolean ehPosicaoValida(Posicao p) {
@@ -87,9 +84,57 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer() {
         return g2;
     }
+    public void criaFase(Teleport tp){
+        if(tp.getDestino() == 'a' || tp.getDestino() == 'i' || tp.getDestino() == 'h'){ // Analisa qual a fase a ser criada
+            Fase.setMatrizStrings(Fase1.getMatrizStrings());
+            Fase.setArrayTeleports(Fase1.getArrayTeleports());
+        }else if(tp.getDestino() == 'g' || tp.getDestino() == 'f'){
+            Fase.setMatrizStrings(Fase2.getMatrizStrings());
+            Fase.setArrayTeleports(Fase2.getArrayTeleports());
+        }else if(tp.getDestino() == 'e' || tp.getDestino() == 'd'){
+            Fase.setMatrizStrings(Fase3.getMatrizStrings());
+            Fase.setArrayTeleports(Fase3.getArrayTeleports());
+        }else if(tp.getDestino() == 'c' || tp.getDestino() == 'b'){
+            Fase.setMatrizStrings(Fase4.getMatrizStrings());
+            Fase.setArrayTeleports(Fase4.getArrayTeleports());
+        }else if(tp.getDestino() == 'j'){
+            Fase.setMatrizStrings(FaseBonus.getMatrizStrings());
+            Fase.setArrayTeleports(FaseBonus.getArrayTeleports());
+        }
+        hero.setPosicao(tp.getPosXDest(), tp.getPosYDest());    // Seta a posicao do heroi na nova fase
+
+         for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                    if(Fase.getElemMatrizStrings(i, j) != null){
+                        parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
+                        if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
+                        parede[i][j].setPosicao(i,j);
+                        faseAtual.add(parede[i][j]);
+                    }
+                }
+            }            
+            /*for(int i = 0; i < (int)Fase.getElemArrayTeleport(0); i++){  // Percorre o array de teleport de acordo com a quantidade de TP's por fase
+                int pos = i * 6;
+                Teleport teleporter = new Teleport(Fase.getElemArrayTeleport(pos + 1), Fase.getElemArrayTeleport(pos + 2), (int)Fase.getElemArrayTeleport(pos + 3), (int)Fase.getElemArrayTeleport(pos + 4));
+                teleporter.setPosicao(Fase.getElemArrayTeleport(pos + 5), Fase.getElemArrayTeleport(pos + 6));
+                    }*/
+            
+            //Adicionar os inimigos;
+    }
+    
+    public void apagaTudo() {
+        Fase.setMatrizStrings(null);  // Define a matriz de strings da fase como sendo nula
+        for(int i = 0; i < 16; i++){
+            for(int j = 0; j < 16; j++){
+                parede[i][j] = null;    // Percorre toda a matriz de objetos da fase, definindo objeto a objeto como nulo
+            }
+        }
+        for(int i = 1; i <= faseAtual.size(); i++){
+            faseAtual.remove(i);    // Apaga todos os elementos no vetor de personagens da fase, menos o hero
+        }
+    }
 
     public void paint(Graphics gOld) {
-        int cont_aux = 1;
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
@@ -106,14 +151,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 }
             }
         if (!this.faseAtual.isEmpty()) { 
-        if(nivel == 0){ // Tentando criar o primeiro nivel
-        Fase fase = new Fase();
-        ArrayList<Personagem> f = new ArrayList<Personagem>();
-        f = fase.criaFase(0, null, faseAtual);
-        faseAtual = f;
-        nivel++;
-        }
-        
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
@@ -152,6 +189,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         };
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.PERIOD);
+        
+        Teleport tp = new Teleport('b', 'a', 6, 1);
+        criaFase(tp);   // Cria a primeira fase
     }
 
     public void keyPressed(KeyEvent e) {
@@ -171,17 +211,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
             hero.setTemEspada(true);
-        }/* else if (e.getKeyCode() == KeyEvent.VK_F) {
-            faseCentral = faseAtual;
-            ArrayList<Personagem> fase = new ArrayList<Personagem>();
-            fase.add(hero);
-            Octorok bV = new Octorok("octorok.png");
-            bV.setPosicao(9, 3);
-            fase.add(bV);
-            faseAtual = fase;
-        } else if (e.getKeyCode() == KeyEvent.VK_G) {
-            faseAtual = faseCentral;
-        }*/ else if (e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay) {
+        } else if (e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(0);
             hero.moveUp();

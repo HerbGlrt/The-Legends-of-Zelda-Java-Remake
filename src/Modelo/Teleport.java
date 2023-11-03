@@ -20,7 +20,7 @@ public class Teleport extends Personagem implements Serializable{
         this.setPosYDest(posYDest);
     }
     
-        public boolean setPosicao(int linha, int coluna) {
+    public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
     }
         
