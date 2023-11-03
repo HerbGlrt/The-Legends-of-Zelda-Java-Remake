@@ -1,8 +1,6 @@
 package Controler;
 
 import Fases.Fase;
-import Fases.Fase1;
-import Fases.Fase2;
 import Modelo.Personagem;
 import Modelo.Octorok;
 import Modelo.Hero;
@@ -40,7 +38,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
-    private ArrayList<Personagem> faseCentral;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int constDelay = 1;
@@ -62,7 +59,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         /*Cria faseAtual adiciona personagens*/
         hero = new Hero("linkDown.png");
-        hero.setPosicao(5, 5);
         this.addPersonagem(hero);
     }
 
@@ -109,15 +105,19 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        if (!this.faseAtual.isEmpty()) { 
+        if(nivel == 0){ // Tentando criar o primeiro nivel
+        Fase fase = new Fase();
+        ArrayList<Personagem> f = new ArrayList<Personagem>();
+        f = fase.criaFase(0, null, faseAtual);
+        faseAtual = f;
+        nivel++;
         }
-        if (!this.faseAtual.isEmpty()) {
+        
             this.cj.desenhaTudo(faseAtual);
             try {
                 this.cj.processaTudo(faseAtual);
                 if (idelay == 2 && hero.getVida() <= 2 && hero.getTemEspada()){
-                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
-                        Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
-                    }
                     if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     }
@@ -138,21 +138,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
         }
-        if (nivel == 0) {
-            for (int i = 0; i < 16; i++) {
-                for (int j = 0; j < 16; j++) {
-                    if (Fase1.getValor(i, j) != null) {
-                        Fase f = new Fase();
-                        this.addPersonagem(f.criaFase(Fase1.getMatriz(), i, j));
-                    }
-                }
-            }
-            addInimigos();
-            nivel++;
-        }
         if (idelay < 20) {
             idelay++;
         }
+    }
     }
 
     public void go() {
@@ -182,7 +171,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
             hero.setTemEspada(true);
-        } else if (e.getKeyCode() == KeyEvent.VK_F) {
+        }/* else if (e.getKeyCode() == KeyEvent.VK_F) {
             faseCentral = faseAtual;
             ArrayList<Personagem> fase = new ArrayList<Personagem>();
             fase.add(hero);
@@ -192,7 +181,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             faseAtual = fase;
         } else if (e.getKeyCode() == KeyEvent.VK_G) {
             faseAtual = faseCentral;
-        }else if (e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay) {
+        }*/ else if (e.getKeyCode() == KeyEvent.VK_UP && idelay >= constDelay) {
             idelay = 0;
             hero.setOlhando(0);
             hero.moveUp();

@@ -138,7 +138,6 @@ public abstract class Personagem implements Serializable {
     }
 
     public boolean setPosicao(int linha, int coluna) {
-        
         return pPosicao.setPosicao(linha, coluna);
     }
 

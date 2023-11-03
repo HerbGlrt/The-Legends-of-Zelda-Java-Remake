@@ -22,9 +22,11 @@ public class BichinhoVaiVemHorizontal extends Personagem  implements Serializabl
     }
     public void autoDesenho(){
         if(bRight)
-            this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);
+            //this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);
+            this.pPosicao.moveRight();
         else
-            this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()-1);           
+            //this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()-1);           
+            this.pPosicao.moveLeft();
 
         super.autoDesenho();
         bRight = !bRight;

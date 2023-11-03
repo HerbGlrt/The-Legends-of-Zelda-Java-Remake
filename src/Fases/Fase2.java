@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Fases;
 
-/**
- *
- * @author andre
- */
-public class Fase2 {
+public class Fase2{
     static String[][] matriz2 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
                                 {"arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", }, // LINHA 1
                                 {"arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", "arbusto2.png", }, // LINHA 2
@@ -28,13 +19,14 @@ public class Fase2 {
                                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 15
 
         };
+    
+    static char[] teleports2 = {2, 'f', 'e', 14, 6, 0, 6, 'g', 'h', 7, 2, 7, 11};
 
-    public static String[][] getMatriz() {
+    static String[][] getMatrizStrings() {
         return matriz2;
     }
     
-    public static String getValor(int i, int j){
-        return matriz2[i][j];
+    static char[] getArrayTeleports() {
+        return teleports2;
     }
-    
 }

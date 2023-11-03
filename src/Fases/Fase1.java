@@ -1,6 +1,6 @@
 package Fases;
 
-public  class Fase1{
+public class Fase1{
     static String[][] matriz1 ={{"coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "coracaoCheio.png", "preto.png", "espadaHUD.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", "preto.png", }, // LINHA 0
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", null, "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 1
                                 {"arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "preto.png", "arbusto.png", "arbustoSepDir.png", null,  "arbustoSepEsq.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", "arbusto.png", }, // LINHA 2
@@ -19,12 +19,14 @@ public  class Fase1{
                                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 15
 
         };
-
-    public static String[][] getMatriz() {
+    
+    static char[] teleports1 = {3, 'a', 'b', 14, 6, 0, 6, 'i', 'j', 7, 10, 4, 2, 'h', 'g', 7, 10, 7, 1};
+    
+    static String[][] getMatrizStrings() {
         return matriz1;
     }
-    
-    public static String getValor(int i, int j){
-        return matriz1[i][j];
+
+    static char[] getArrayTeleports() {
+        return teleports1;
     }
 }
