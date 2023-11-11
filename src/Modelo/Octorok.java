@@ -10,8 +10,8 @@ import java.io.Serializable;
 public class Octorok extends Inimigos implements Serializable{
      private int iContaIntervalos;
     
-    public Octorok(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public Octorok() {
+        super("Octorok.png");
         this.iContaIntervalos = 0;
         this.setbMortal(true);
         this.setbTransponivel(true);

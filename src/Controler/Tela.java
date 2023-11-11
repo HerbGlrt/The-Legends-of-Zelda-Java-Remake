@@ -5,7 +5,7 @@ import Modelo.Personagem;
 import Modelo.Octorok;
 import Modelo.Hero;
 import Modelo.Estatico;
-import Modelo.BichinhoVaiVemHorizontal;
+import Modelo.Lynel;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Fases.Fase1;
@@ -14,7 +14,7 @@ import Fases.Fase3;
 import Fases.Fase4;
 import Fases.FaseBonus;
 import Modelo.Teleport;
-import Modelo.ZigueZague;
+import Modelo.Moblin;
 import auxiliar.Posicao;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -143,17 +143,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             int pos = i * 3;
             switch(Fase.getElemArrayInimigos(pos + 1)){
                 case 0:
-                    Octorok inimigo0 = new Octorok("octorok.png");
+                    Octorok inimigo0 = new Octorok();
                     inimigo0.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
                      faseAtual.add(inimigo0);
                     break;
                 case 1:
-                    ZigueZague inimigo1 = new ZigueZague("octorok.png");
+                    Moblin inimigo1 = new Moblin();
                     inimigo1.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
                     faseAtual.add(inimigo1);
                     break;
                 case 2:
-                    BichinhoVaiVemHorizontal inimigo2 = new BichinhoVaiVemHorizontal("octorok.png");
+                    Lynel inimigo2 = new Lynel();
                     inimigo2.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
                     faseAtual.add(inimigo2);
                     break;
