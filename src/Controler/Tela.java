@@ -2,6 +2,7 @@ package Controler;
 
 import Fases.Fase;
 import Modelo.Personagem;
+import Modelo.Projetil;
 import Modelo.Octorok;
 import Modelo.Hero;
 import Modelo.Estatico;
@@ -85,7 +86,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer() {
         return g2;
     }
-    
+
+    public Hero getHero() {
+        return hero;
+    }
+
     public void criaFase(Teleport tp){
         if(tp.getDestino() == 'a' || tp.getDestino() == 'i' || tp.getDestino() == 'h'){ // Analisa qual a fase a ser criada
             Fase.setMatrizStrings(Fase1.getMatrizStrings());
@@ -211,10 +216,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             try {
                 this.cj.processaTudo(faseAtual);
                 if (idelay == 2 && hero.getVida() <= 2 && hero.getTemEspada()){
-                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                    if ((faseAtual.get(faseAtual.size()-1)) instanceof Projetil){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     }
-                    if ((faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+                    if ((faseAtual.get(faseAtual.size()-1)) instanceof Projetil){
                         Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                     }
                     hero.setTemEspada(false);
@@ -258,7 +263,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             Estatico cabecalho = new Estatico("preto.png");
             if(i == 0 || i == 2 || i == 4){
                 try {
-                    cabecalho.setIsCoracao(1);  // Se for um sprite de coração, seta isCoracao
+                    cabecalho.setIsCoracao(true);  // Se for um sprite de coração, seta isCoracao
                     cabecalho.setDesenho("coracaoCheio.png");
                 } catch (IOException ex) {
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
@@ -298,7 +303,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(0);
             hero.moveUp();
-            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)) instanceof Projetil){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                 hero.setTemEspada(false);
             }
@@ -306,7 +311,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(2);
             hero.moveDown();
-            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1))  instanceof Projetil){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                 hero.setTemEspada(false);
             }
@@ -314,7 +319,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(3);
             hero.moveLeft();
-            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1))  instanceof Projetil){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                 hero.setTemEspada(false);
             }
@@ -322,7 +327,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             idelay = 0;
             hero.setOlhando(1);
             hero.moveRight();
-            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1)).getsIsProjetil()){
+            if (hero.getTemEspada() && hero.getVida() <= 2 && (faseAtual.get(faseAtual.size()-1))  instanceof Projetil){
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                 hero.setTemEspada(false);
             }
