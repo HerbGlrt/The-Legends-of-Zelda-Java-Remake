@@ -40,7 +40,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import javax.swing.JButton;
 
-public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
+public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener{
 
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
@@ -170,9 +170,18 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 parede[i][j] = null;    // Percorre toda a matriz de objetos da fase, definindo objeto a objeto como nulo
             }
         }
+        ArrayList<Personagem> faseCopia =  (ArrayList<Personagem>) faseAtual.clone();
         Hero h = (Hero)faseAtual.get(0);
+        faseCopia.add(h);
+        for(int i = 1; i < Consts.RES+1; i++){
+            Estatico e = (Estatico)faseAtual.get(i);
+            faseCopia.add(e);
+        }
         faseAtual.clear();
-        faseAtual.add(h);
+        for(int i = 0; i <= 16; i++){
+            faseAtual.add(faseCopia.get(i));
+        }
+        faseCopia.clear();
     }
 
        public void paint(Graphics gOld) {
