@@ -115,31 +115,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
         hero.setPosicao(tp.getPosXDest(), tp.getPosYDest());    // Seta a posicao do heroi na nova fase
         
-        for(int i = 0; i < Consts.RES; i++){
-            Estatico cabecalho = new Estatico("preto.png");
-            if(i == 0 || i == 2 || i == 4){
-                try {
-                    cabecalho.setIsCoracao(1);  // Se for um sprite de coração, seta isCoracao
-                    cabecalho.setDesenho("coracaoCheio.png");
-                } catch (IOException ex) {
-                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else if(i == 6){
-                try {
-                    cabecalho.setDesenho("espadaHUD.png");
-                } catch (IOException ex) {
-                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            cabecalho.setPosicao(0, i);
-            addPersonagem(cabecalho);
-        }
-
-         for (int i = 1; i < Consts.RES; i++) {
+         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 if(Fase.getElemMatrizStrings(i, j) != null){
                     parede[i][j] = new Estatico(Fase.getElemMatrizStrings(i,j));
-                    if(j == 1 || j == 3 || j == 5){parede[i][j].setIsCoracao(1);}   // Se for um sprite de coração, seta isCoracao
                     parede[i][j].setPosicao(i,j);
                     addPersonagem(parede[i][j]);
                 }
@@ -266,6 +245,26 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         timer.schedule(task, 0, Consts.PERIOD);
 
         Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
+        for(int i = 0; i < Consts.RES; i++){
+            Estatico cabecalho = new Estatico("preto.png");
+            if(i == 0 || i == 2 || i == 4){
+                try {
+                    cabecalho.setIsCoracao(1);  // Se for um sprite de coração, seta isCoracao
+                    cabecalho.setDesenho("coracaoCheio.png");
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if(i == 6){
+                try {
+                    cabecalho.setDesenho("espadaHUD.png");
+                } catch (IOException ex) {
+                    Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            cabecalho.setPosicao(0, i);
+            addPersonagem(cabecalho);
+        }
+
         criaFase(tp);   // Cria a primeira fase
     }
 

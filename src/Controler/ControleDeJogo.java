@@ -49,7 +49,7 @@ public class ControleDeJogo {
             }
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport() == false){
                 if (hero.vida(umaFase) == 0){
-                    umaFase.remove(hero);
+                   System.exit(0);
                 }
                 if(pIesimoPersonagem.getsIsProjetil()){
                     umaFase.remove(pIesimoPersonagem);
