@@ -9,6 +9,11 @@ public class Estatico extends Personagem implements Serializable{
         super(sNomeImagePNG);
         this.setbMortal(false);
         this.setbTransponivel(false);
+        
+        if("carne.png".equals(sNomeImagePNG)){
+            this.setbTransponivel(true);
+            this.setIsCarne(true);
+        }
     }
     
 }

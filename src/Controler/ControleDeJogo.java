@@ -50,8 +50,12 @@ public class ControleDeJogo {
                         umaFase.remove(espada);
                 }
             }
-            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport() == false){
-                if (hero.vida(umaFase) == 0){
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsCarne() && hero.getVida() < 3){
+                hero.vida(umaFase, 1);
+                umaFase.remove(pIesimoPersonagem);
+            }
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && !pIesimoPersonagem.getIsTeleport() && !pIesimoPersonagem.getIsCarne()){
+                if (hero.vida(umaFase, 0) == 0){
                    System.exit(0);
                 }
                 if(pIesimoPersonagem.getsIsProjetil()){

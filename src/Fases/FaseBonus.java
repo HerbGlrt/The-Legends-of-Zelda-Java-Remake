@@ -6,9 +6,9 @@ public class FaseBonus {
                                 {"pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png",}, // LINHA 2
                                 {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 3
                                 {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 4
-                                {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 5
-                                {"pedra.png", "pedra.png", null, null, null, "fogo.png", null, "velho.png",  null, "fogo.png", null, null, null,null, "pedra.png","pedra.png", }, // LINHA 6
-                                {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 7
+                                {"pedra.png", "pedra.png", null, null, null, "fogo.png", null, "velho.png",  null, "fogo.png", null, null, null, null, "pedra.png","pedra.png", }, // LINHA 5
+                                {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 6
+                                {"pedra.png", "pedra.png", null, null, null, "carne.png", null, "carne.png", null, "carne.png", null, null, null, null, "pedra.png","pedra.png", }, // LINHA 7
                                 {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 8
                                 {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 9
                                 {"pedra.png","pedra.png","pedraSup.png","pedraSup.png","pedraSup.png","pedraSup.png","pedraSup.png",null,"pedraSup.png","pedraSup.png","pedraSup.png","pedraSup.png","pedraSup.png","pedraSup.png","pedra.png","pedra.png",}, // LINHA 10

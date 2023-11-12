@@ -29,6 +29,7 @@ public abstract class Personagem implements Serializable {
     protected int isCoracao = 0;   // O personagem é um coração? (0 = Não, 1 = Coração cheio, 2 = Coração vazio)
     protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
     protected int vida = 3; // Vida do personagem
+    protected boolean isCarne = false;
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -64,7 +65,15 @@ public abstract class Personagem implements Serializable {
     public void setIsTeleport(boolean isTelepor) {
         this.isTeleport = isTelepor;
     }
-    
+
+    public boolean getIsCarne() {
+        return isCarne;
+    }
+
+    public void setIsCarne(boolean isCarne) {
+        this.isCarne = isCarne;
+    }
+
     public boolean getTemEspada() {
         return temEspada;
     }

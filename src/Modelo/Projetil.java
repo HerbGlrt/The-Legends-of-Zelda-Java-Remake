@@ -8,13 +8,13 @@ import java.awt.Graphics;
 public class Projetil extends Personagem implements Serializable{
     int i; // olhando
     int k; // projetil estatico (0) ou dinamico (1)
-    int tmp = 0;
+
     public Projetil(String sNomeImagePNG,int i, int k) {
         super(sNomeImagePNG);
         this.setIsProjetil(true);
         this.setbMortal(true);
         this.setbTransponivel(true);
-        this.i=i;
+        this.i = i;
         this.k = k;
     }
     
