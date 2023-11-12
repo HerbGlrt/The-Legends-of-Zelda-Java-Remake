@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Personagem;
 import Modelo.Hero;
+import Modelo.Lynel;
 import Modelo.Projetil;
 import Modelo.Teleport;
 import auxiliar.Posicao;
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 public class ControleDeJogo {
     public void desenhaTudo(ArrayList<Personagem> e){
         for(int i = 0; i < e.size(); i++){
-            if(e.get(i) instanceof Projetil){
-                e.get(i).autoDesenho();
+            if(e.get(i) instanceof Lynel){  // Lynem tem um autoDesenho diferente
+                Lynel lynel = (Lynel) e.get(i);
+                Hero hero = (Hero) e.get(0);
+                lynel.autoDesenhoLynel(hero);
             }
             else{
                 e.get(i).autoDesenho();

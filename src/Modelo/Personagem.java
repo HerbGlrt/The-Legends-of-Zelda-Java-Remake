@@ -121,8 +121,6 @@ public abstract class Personagem implements Serializable {
     }
     
     public Posicao getPosicao() {
-        /*TODO: Retirar este método para que objetos externos nao possam operar
-         diretamente sobre a posição do Personagem*/
         return pPosicao;
     }
 
@@ -148,6 +146,14 @@ public abstract class Personagem implements Serializable {
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
+    }
+    
+    public int getLinha(){
+        return pPosicao.getLinha();
+    }
+    
+    public int getColuna(){
+        return pPosicao.getColuna();
     }
 
     public boolean moveUp() {

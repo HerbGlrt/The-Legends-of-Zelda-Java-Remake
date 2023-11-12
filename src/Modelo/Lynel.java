@@ -1,27 +1,44 @@
 package Modelo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenho;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.io.IOException;
 import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.security.SecureRandom;
 
 public class Lynel extends Inimigos  implements Serializable{
-
+    private int deltax;
+    private int deltay;
+    private int delay;
+    
     public Lynel() {
         super("lynelBaixo.png");
         this.setbMortal(true);
         this.setbTransponivel(true);
     }
-    public void autoDesenho(){
+ 
+    public void deltaCoord(int hx, int hy){
+        deltax = this.getLinha() - hx;
+        deltay = this.getColuna() - hy;
+    }
+    
+    public void autoDesenhoLynel(Hero hero){
+        delay++;
+        this.deltaCoord(hero.getLinha(), hero.getColuna());
         
-        this.validaPosicao();
+        if(deltax < 0 && delay == 1){
+            this.setPosicao(this.getLinha()+1, this.getColuna());
+            this.validaPosicao();
+            delay = 0;
+        }if(deltax > 0 && delay == 1){
+            this.setPosicao(this.getLinha()-1, this.getColuna());
+            this.validaPosicao();
+            delay = 0;
+        }if(deltay < 0 && delay == 1){
+            this.setPosicao(this.getLinha(), this.getColuna()+1);
+            this.validaPosicao();
+            delay = 0;
+        }if(deltay > 0 && delay == 1){
+            this.setPosicao(this.getLinha(), this.getColuna()-1);
+            this.validaPosicao();
+            delay = 0;
+        }
         super.autoDesenho();
     }
 }
