@@ -22,11 +22,13 @@ public abstract class Personagem implements Serializable {
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected int olhando = 2;           // Qual lado está olhando: Cima(0), Direita(1), Baixo(2), Esquerda(3)
+    protected boolean isProjetil = false;   // O personagem é um projétil?
+    protected boolean isEspada = false;   // O personagem é um projétil?
+    private boolean isTeleport = false;    // O personagem é um teleporter?
     public boolean temEspada = false; // cooldown da espada
+    protected int isCoracao = 0;   // O personagem é um coração? (0 = Não, 1 = Coração cheio, 2 = Coração vazio)
     protected int countSprite = 0;    // Contador para mudar os sprites de animalçao do personagem
     protected int vida = 3; // Vida do personagem
-    protected boolean isEspada = false;
-    protected boolean isCoracao = false;
 
     protected Personagem(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -55,6 +57,14 @@ public abstract class Personagem implements Serializable {
         return true;       
     }
 
+    public boolean getIsTeleport() {
+        return isTeleport;
+    }
+
+    public void setIsTeleport(boolean isTelepor) {
+        this.isTeleport = isTelepor;
+    }
+    
     public boolean getTemEspada() {
         return temEspada;
     }
@@ -62,25 +72,33 @@ public abstract class Personagem implements Serializable {
     public void setTemEspada(boolean temEspada) {
         this.temEspada = temEspada;
     }
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
+    }
+        
+    public boolean getsIsProjetil() {
+        return isProjetil;
+    }
 
-    public boolean isIsCoracao() {
+    public void setIsProjetil(boolean isProjetil) {
+        this.isProjetil = isProjetil;
+    }
+
+    public int getIsCoracao() {
         return isCoracao;
     }
 
-    public void setIsCoracao(boolean isCoracao) {
+    public void setIsCoracao(int isCoracao) {
         this.isCoracao = isCoracao;
     }
-    
+
     public boolean getIsEspada() {
         return isEspada;
     }
 
     public void setIsEspada(boolean isEspada) {
         this.isEspada = isEspada;
-    }
-
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
     }
     
     public int getVida() {

@@ -35,7 +35,7 @@ public class ControleDeJogo {
         Personagem pIesimoPersonagem;
          for(int i = 1; i < umaFase.size(); i++){
              pIesimoPersonagem = umaFase.get(i);
-             if(!pIesimoPersonagem.getIsEspada()){
+             if(pIesimoPersonagem.getIsEspada()){
                 espada = (Projetil) pIesimoPersonagem;    // se o pIesimoPersonagem for do tipo espada, salva ele como espada
             }
          }
@@ -47,15 +47,15 @@ public class ControleDeJogo {
                         umaFase.remove(espada);
                 }
             }
-            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem instanceof Teleport){
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport() == false){
                 if (hero.vida(umaFase) == 0){
                    System.exit(0);
                 }
-                if(pIesimoPersonagem instanceof Projetil){
+                if(pIesimoPersonagem.getsIsProjetil()){
                     umaFase.remove(pIesimoPersonagem);
                 }
             }
-            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem instanceof Teleport){
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsTeleport()){
                 setTp((Teleport)pIesimoPersonagem); // Se o hero subiu em algum teleport, será visto na paint e a fase trocada
                 }
         }              

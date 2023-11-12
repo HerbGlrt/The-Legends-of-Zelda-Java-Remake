@@ -1,6 +1,6 @@
 package Modelo;
 
-import Controler.Tela;
+import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,6 +20,7 @@ public class Lynel extends Inimigos  implements Serializable{
         this.setbTransponivel(true);
     }
     public void autoDesenho(){
+        
         this.validaPosicao();
         super.autoDesenho();
     }

@@ -11,6 +11,7 @@ public class Projetil extends Personagem implements Serializable{
     int tmp = 0;
     public Projetil(String sNomeImagePNG,int i, int k) {
         super(sNomeImagePNG);
+        this.setIsProjetil(true);
         this.setbMortal(true);
         this.setbTransponivel(true);
         this.i=i;
