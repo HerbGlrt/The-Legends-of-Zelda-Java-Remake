@@ -192,6 +192,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         
         Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
         criaFase(tp);
+        repaint();
     }
     
     public void apagaTudo() {
@@ -312,8 +313,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         System.out.println("---------------------- Controles: ----------------------");
         System.out.println("- Andar nas setinhas;");
         System.out.println("- Atirar no A;");
-        System.out.println("- Salva no S;");
-        System.out.println("- Load no L;");
+        System.out.println("- Salva no S, load no L;");
+        System.out.println("- Reset no R;");
     }
 
     public void keyPressed(KeyEvent e) {

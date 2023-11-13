@@ -1,4 +1,4 @@
-package Controler;
+ package Controler;
 
 import Modelo.Personagem;
 import Fases.FaseBonus;

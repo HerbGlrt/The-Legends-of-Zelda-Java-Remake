@@ -33,6 +33,7 @@ public class Fase1{
         return inimigos1Bkp;
     }
     
+    
     public static String[][] getMatrizStrings() {
         return matriz1;
     }
