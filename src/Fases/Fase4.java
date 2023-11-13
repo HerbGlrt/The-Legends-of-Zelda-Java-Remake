@@ -32,6 +32,10 @@ public class Fase4 {
         return inimigos4;
     }
    
+   public static void setArrayInimigos(int[] inimigos) {
+        Fase4.inimigos4 = inimigos;
+    }
+   
     public static char[] getArrayTeleports() {
         return teleports4;
     }

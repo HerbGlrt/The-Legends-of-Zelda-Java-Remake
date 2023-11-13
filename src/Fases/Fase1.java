@@ -31,7 +31,11 @@ public class Fase1{
     public static int[] getArrayInimigos() {
         return inimigos1;
     }
-    
+
+    public static void setArrayInimigos(int[] inimigos) {
+        Fase1.inimigos1 = inimigos;
+    }
+
     public static char[] getArrayTeleports() {
         return teleports1;
     }

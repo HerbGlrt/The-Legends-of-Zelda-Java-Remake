@@ -22,7 +22,10 @@ public class SaveAndLoad {
             ds.pPosicao = tela.getFaseAtual().get(0).getPosicao();
             ds.vida = tela.getFaseAtual().get(0).getVida();
             ds.fase = tela.getFaseAtual();
-            
+            ds.inimigos1=Fases.Fase1.getArrayInimigos();
+            ds.inimigos2=Fases.Fase2.getArrayInimigos();
+            ds.inimigos3=Fases.Fase3.getArrayInimigos();
+            ds.inimigos4=Fases.Fase4.getArrayInimigos();
             out.writeObject(ds);
             
         }
@@ -45,6 +48,10 @@ public class SaveAndLoad {
             tela.getFaseAtual().get(0).setPosicao(ds.pPosicao.getLinha(), ds.pPosicao.getColuna());
             tela.getFaseAtual().get(0).setVida(ds.vida);
             tela.setFaseAtual(ds.fase);
+            Fases.Fase1.setArrayInimigos(ds.inimigos1);
+            Fases.Fase2.setArrayInimigos(ds.inimigos2);
+            Fases.Fase3.setArrayInimigos(ds.inimigos3);
+            Fases.Fase4.setArrayInimigos(ds.inimigos4);
         }
         catch (Exception e){
             System.out.println("Load Exception!");
