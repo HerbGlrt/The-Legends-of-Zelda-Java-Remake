@@ -1,6 +1,5 @@
 package Modelo;
 
-import Auxiliar.Desenho;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Random;
@@ -8,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Moblin extends Inimigos  implements Serializable{
+    private int delay;
     
     public Moblin() {
         super("moblinBaixo.png");
@@ -18,7 +18,9 @@ public class Moblin extends Inimigos  implements Serializable{
     public void autoDesenho(){
         Random rand = new Random();
         int iDirecao = rand.nextInt(4)+1;
+        delay++;
         
+        if(delay == 2){
         switch (iDirecao) {
             case 1:
                 this.setPosicao(pPosicao.getLinha(), pPosicao.getColuna()+1);
@@ -60,6 +62,8 @@ public class Moblin extends Inimigos  implements Serializable{
             default:
                 break;
         }
+        delay = 0;
+        }
         super.autoDesenho();
-    }    
+    }   
 }

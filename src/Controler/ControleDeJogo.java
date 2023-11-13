@@ -2,6 +2,10 @@ package Controler;
 
 import Modelo.Personagem;
 import Modelo.Hero;
+import Modelo.Octorok;
+import Modelo.Lynel;
+import Modelo.Moblin;
+import Fases.Fase;
 import Modelo.Lynel;
 import Modelo.Projetil;
 import Modelo.Teleport;
@@ -46,8 +50,9 @@ public class ControleDeJogo {
             pIesimoPersonagem = umaFase.get(i);
             if(espada != null && hero.getTemEspada() && pIesimoPersonagem.getIsEspada() == false  && pIesimoPersonagem.getbMortal() == true){
                 if(espada.getPosicao().igual(pIesimoPersonagem.getPosicao())){
-                        umaFase.remove(pIesimoPersonagem);
-                        umaFase.remove(espada);
+                    retiraInimigo(pIesimoPersonagem);
+                    umaFase.remove(pIesimoPersonagem);
+                    umaFase.remove(espada);
                 }
             }
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsCarne() && hero.getVida() < 3){
@@ -80,4 +85,39 @@ public class ControleDeJogo {
         return true;
     }
     
+    public void retiraInimigo(Personagem inimigo){
+        switch(Fase.getFase()){
+        case(1):
+        if(inimigo instanceof Octorok){
+            Fase.mataInimigo(1);
+        }else if(inimigo instanceof Moblin){
+            Fase.mataInimigo(5);
+        }
+        break;
+        case(2):
+        if(inimigo instanceof Octorok){
+            Fase.mataInimigo(1);
+        }else if(inimigo instanceof Moblin){
+            Fase.mataInimigo(5);
+        }else if(inimigo instanceof Lynel){
+            Fase.mataInimigo(9);
+        }
+        break;
+        case(3):
+        if(inimigo instanceof Octorok){
+            Fase.mataInimigo(1);
+        }else if(inimigo instanceof Moblin){
+            Fase.mataInimigo(5);
+        }
+        break;
+        case(4):
+        if(inimigo instanceof Octorok){
+            Fase.mataInimigo(1);
+        }else if(inimigo instanceof Lynel){
+            Fase.mataInimigo(5);
+        }
+        break;
+    }
+        
+    }
 }

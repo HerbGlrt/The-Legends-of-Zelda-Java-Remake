@@ -22,19 +22,19 @@ public class Lynel extends Inimigos  implements Serializable{
         delay++;
         this.deltaCoord(hero.getLinha(), hero.getColuna());
         
-        if(deltax < 0 && delay == 1){
+        if(deltax < 0 && delay == 2){
             this.setPosicao(this.getLinha()+1, this.getColuna());
             this.validaPosicao();
             delay = 0;
-        }if(deltax > 0 && delay == 1){
+        }if(deltax > 0 && delay == 2){
             this.setPosicao(this.getLinha()-1, this.getColuna());
             this.validaPosicao();
             delay = 0;
-        }if(deltay < 0 && delay == 1){
+        }if(deltay < 0 && delay == 2){
             this.setPosicao(this.getLinha(), this.getColuna()+1);
             this.validaPosicao();
             delay = 0;
-        }if(deltay > 0 && delay == 1){
+        }if(deltay > 0 && delay == 2){
             this.setPosicao(this.getLinha(), this.getColuna()-1);
             this.validaPosicao();
             delay = 0;

@@ -20,7 +20,7 @@ public class Fase3 {
 
         };
     
-    private static int[] inimigos3 = {2, 0, 8, 3, 1, 6, 4};
+    private static int[] inimigos3 = {2, 1, 0, 8, 3, 1, 1, 6, 4};
 
     private static char[] teleports3 = {2, 'd', 'c', 2, 13, 11, 13, 'e', 'f', 6, 1, 6, 15};
 

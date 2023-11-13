@@ -91,21 +91,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             Fase.setMatrizStrings(Fase1.getMatrizStrings());
             Fase.setArrayTeleports(Fase1.getArrayTeleports());
             Fase.setArrayInimigos(Fase1.getArrayInimigos());
+            Fase.setFase(1);
             fundo = 0;
         }else if(tp.getDestino() == 'g' || tp.getDestino() == 'f'){
             Fase.setMatrizStrings(Fase2.getMatrizStrings());
             Fase.setArrayTeleports(Fase2.getArrayTeleports());
             Fase.setArrayInimigos(Fase2.getArrayInimigos());
+            Fase.setFase(2);
             fundo = 0;        
         }else if(tp.getDestino() == 'e' || tp.getDestino() == 'd'){
             Fase.setMatrizStrings(Fase3.getMatrizStrings());
             Fase.setArrayTeleports(Fase3.getArrayTeleports());
             Fase.setArrayInimigos(Fase3.getArrayInimigos());
+            Fase.setFase(3);
             fundo = 0;        
         }else if(tp.getDestino() == 'c' || tp.getDestino() == 'b'){
             Fase.setMatrizStrings(Fase4.getMatrizStrings());
             Fase.setArrayTeleports(Fase4.getArrayTeleports());
             Fase.setArrayInimigos(Fase4.getArrayInimigos());
+            Fase.setFase(4);
             fundo = 0;        
         }else if(tp.getDestino() == 'j'){
             Fase.setMatrizStrings(FaseBonus.getMatrizStrings());
@@ -140,23 +144,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }            
         
         for(int i = 0; i < Fase.getElemArrayInimigos(0); i++){
-            int pos = i * 3;
-            switch(Fase.getElemArrayInimigos(pos + 1)){
+            int pos = i * 4;
+            if(Fase.getElemArrayInimigos(pos + 1) == 1){
+            switch(Fase.getElemArrayInimigos(pos + 2)){
                 case 0:
                     Octorok inimigo0 = new Octorok();
-                    inimigo0.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                    inimigo0.setPosicao(Fase.getElemArrayInimigos(pos + 3), Fase.getElemArrayInimigos(pos + 4));
                      faseAtual.add(inimigo0);
                     break;
                 case 1:
                     Moblin inimigo1 = new Moblin();
-                    inimigo1.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                    inimigo1.setPosicao(Fase.getElemArrayInimigos(pos + 3), Fase.getElemArrayInimigos(pos + 4));
                     faseAtual.add(inimigo1);
                     break;
                 case 2:
                     Lynel inimigo2 = new Lynel();
-                    inimigo2.setPosicao(Fase.getElemArrayInimigos(pos + 2), Fase.getElemArrayInimigos(pos + 3));
+                    inimigo2.setPosicao(Fase.getElemArrayInimigos(pos + 3), Fase.getElemArrayInimigos(pos + 4));
                     faseAtual.add(inimigo2);
                     break;
+                }
             }
         }
     }

@@ -20,14 +20,14 @@ public class Fase1{
 
         };
     
-    private static int[] inimigos1 = {2, 0, 5, 4, 1, 6, 4};
+    private static int[] inimigos1 = {2, 1, 0, 5, 4, 1, 1, 6, 4};
     
     private static char[] teleports1 = {3, 'a', 'b', 6, 14, 6, 0, 'i', 'j', 10, 7, 2, 4, 'h', 'g', 10, 7, 1, 7};
     
     public static String[][] getMatrizStrings() {
         return matriz1;
     }
-    
+
     public static int[] getArrayInimigos() {
         return inimigos1;
     }
