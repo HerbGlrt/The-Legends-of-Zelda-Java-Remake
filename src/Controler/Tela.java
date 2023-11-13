@@ -177,6 +177,23 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
     }
     
+    public void reiniciaJogo(){
+        apagaTudo();
+        Fase1.reiniciaArray();
+        Fase2.reiniciaArray();
+        Fase3.reiniciaArray();
+        Fase4.reiniciaArray();
+        FaseBonus.reiniciaArray();
+        try {
+            hero.vida(faseAtual, 2);
+        } catch (IOException ex) {
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Teleport tp = new Teleport('b', 'a', 6, 1); // Fase 1
+        criaFase(tp);
+    }
+    
     public void apagaTudo() {
         Fase.setMatrizStrings(null);  // Define a matriz de strings da fase como sendo nula
         Fase.setArrayTeleports(null);   // Define o array de teleports da fase como sendo nulo
@@ -291,6 +308,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
 
         criaFase(tp);   // Cria a primeira fase
+        System.out.println("Bem vindo ao jogo de POO - The Legends of Zelda de NES!");
+        System.out.println("---------------------- Controles: ----------------------");
+        System.out.println("- Andar nas setinhas;");
+        System.out.println("- Atirar no A;");
+        System.out.println("- Salva no S;");
+        System.out.println("- Load no L;");
     }
 
     public void keyPressed(KeyEvent e) {
@@ -350,7 +373,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             s.load();
             hero = (Hero) faseAtual.get(0);
             System.out.println("Jogo carregado");
-        }
+        } else if (e.getKeyCode() == KeyEvent.VK_R){
+            reiniciaJogo();
+    }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
     }
     //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/

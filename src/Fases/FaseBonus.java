@@ -23,6 +23,10 @@ public class FaseBonus {
     private static int[] inimigosBonus = {0};
 
     private static char[] teleportsBonus = {1, 'j', 'i', 3, 4, 11, 7};
+    
+    public static void reiniciaArray(){
+        matrizBonus[7][5] = matrizBonus[7][7] = matrizBonus[7][9] = "carne.png";
+    }
 
     public static String[][] getMatrizStrings() {
         return matrizBonus;

@@ -21,9 +21,17 @@ public class Fase2{
         };
     
     private static int[] inimigos2 = {3, 1, 0, 8, 3, 1, 1, 6, 4, 1, 2, 4, 11};
-
+    private static int[] inimigos2Bkp = {3, 1, 0, 8, 3, 1, 1, 6, 4, 1, 2, 4, 11};
     
     private static char[] teleports2 = {2, 'f', 'e' , 6, 14, 6, 0, 'g', 'h', 2, 7, 11, 7};
+    
+    public static void reiniciaArray(){
+        Fase2.setArrayInimigos(Fase2.getInimigosBkp());
+    }
+    
+    public static int[] getInimigosBkp() {
+        return inimigos2Bkp;
+    }
 
     public static String[][] getMatrizStrings() {
         return matriz2;

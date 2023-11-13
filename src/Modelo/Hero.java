@@ -27,11 +27,17 @@ public class Hero extends Personagem implements Serializable{
         return olhando;
     }
     
-    public int vida(ArrayList<Personagem> umaFase, int mode) throws IOException{    // Mode == 0, perde vida. Mode == 1, ganha vida.
-        if(mode == 0){
-            this.setVida(this.getVida() - 1);
-        }else{
-            this.setVida(this.getVida() + 1);
+    public int vida(ArrayList<Personagem> umaFase, int mode) throws IOException{    // Mode == 0, perde vida. Mode == 1, ganha vida. Mode == 2, seta vida para 3
+        switch (mode) {
+            case 0:
+                this.setVida(this.getVida() - 1);
+                break;
+            case 1:
+                this.setVida(this.getVida() + 1);
+                break;
+            default:
+                this.setVida(3);
+                break;
         }
         
         Estatico coracao1  = (Estatico)umaFase.get(5);
