@@ -1,6 +1,7 @@
 package Controler;
 
 import Modelo.Personagem;
+import Fases.FaseBonus;
 import Modelo.Hero;
 import Modelo.Octorok;
 import Modelo.Lynel;
@@ -58,8 +59,9 @@ public class ControleDeJogo {
             if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && pIesimoPersonagem.getIsCarne() && hero.getVida() < 3){
                 hero.vida(umaFase, 1);
                 umaFase.remove(pIesimoPersonagem);
+                FaseBonus.matrizBonus[hero.getLinha()][hero.getColuna()] = null;
             }
-            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && !pIesimoPersonagem.getIsTeleport() && !pIesimoPersonagem.getIsCarne()){
+            if(hero.getPosicao().igual(pIesimoPersonagem.getPosicao()) && !pIesimoPersonagem.getIsTeleport() && !pIesimoPersonagem.getIsCarne() && !pIesimoPersonagem.getIsEspada()){
                 if (hero.vida(umaFase, 0) == 0){
                    System.exit(0);
                 }

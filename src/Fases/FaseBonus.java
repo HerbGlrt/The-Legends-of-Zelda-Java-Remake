@@ -1,7 +1,7 @@
 package Fases;
 
 public class FaseBonus {
-   private static String[][] matrizBonus ={{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 0
+   public static String[][] matrizBonus ={{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, }, // LINHA 0
                                 {"pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png",},  // LINHA 1
                                 {"pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png","pedra.png",}, // LINHA 2
                                 {"pedra.png", "pedra.png", null, null, null, null, null, null, null, null, null, null, null, null, "pedra.png","pedra.png", }, // LINHA 3
@@ -20,7 +20,7 @@ public class FaseBonus {
 
         };
    
-       private static int[] inimigosBonus = {0};
+    private static int[] inimigosBonus = {0};
 
     private static char[] teleportsBonus = {1, 'j', 'i', 3, 4, 11, 7};
 
