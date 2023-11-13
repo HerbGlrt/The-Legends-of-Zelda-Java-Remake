@@ -180,5 +180,9 @@ public abstract class Personagem implements Serializable {
     public boolean moveLeft() {
         return this.pPosicao.moveLeft();
     }
+
+     public void setOlhando(int olhando) {
+        this.olhando = olhando;
+    }
     
 }

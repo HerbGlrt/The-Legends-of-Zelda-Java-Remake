@@ -50,6 +50,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private int constDelay = 1;
     private int idelay = constDelay;
     private static int fundo = 0;
+    private SaveAndLoad s;
 
     public Tela() {
         Desenho.setCenario(this);
@@ -68,12 +69,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hero = new Hero("linkDown.png");
         this.addPersonagem(hero);
         hero.setPosicao(6,1);
+        
+        s = new SaveAndLoad(this);
     }
 
     public boolean ehPosicaoValida(Posicao p) {
         return cj.ehPosicaoValida(this.faseAtual, p);
     }
-
+    
+    public ArrayList<Personagem> getFaseAtual(){
+        return faseAtual;
+    }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
     }
@@ -84,6 +90,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public Graphics getGraphicsBuffer() {
         return g2;
+    }
+    
+    public void setFaseAtual(ArrayList<Personagem> faseAtual) {
+        this.faseAtual = faseAtual;
     }
     
     public void criaFase(Teleport tp){
@@ -332,6 +342,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Desenho.acessoATelaDoJogo().removePersonagem(faseAtual.get(faseAtual.size()-1));
                 hero.setTemEspada(false);
             }
+        } else if (e.getKeyCode() == KeyEvent.VK_S){
+            s.save();
+            System.out.println("Jogo salvo!");
+            
+        } else if (e.getKeyCode() == KeyEvent.VK_L){
+            s.load();
+            hero = (Hero) faseAtual.get(0);
+            System.out.println("Jogo carregado");
         }
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", " + (hero.getPosicao().getLinha()));
     }
