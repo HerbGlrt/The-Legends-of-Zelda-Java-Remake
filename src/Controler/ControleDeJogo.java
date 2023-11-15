@@ -7,6 +7,10 @@ import Modelo.Octorok;
 import Modelo.Lynel;
 import Modelo.Moblin;
 import Fases.Fase;
+import Fases.Fase1;
+import Fases.Fase2;
+import Fases.Fase3;
+import Fases.Fase4;
 import Modelo.Lynel;
 import Modelo.Projetil;
 import Modelo.Teleport;
@@ -119,7 +123,14 @@ public class ControleDeJogo {
             Fase.mataInimigo(5);
         }
         break;
+        }   
     }
-        
+    
+    public void reiniciaArraysInimigos(){
+        Fase1.inimigos1[1] = Fase1.inimigos1[5] = 1;
+        Fase2.inimigos2[1] = Fase2.inimigos2[5] = Fase2.inimigos2[9] = 1;
+        Fase3.inimigos3[1] = Fase3.inimigos3[5] = 1;
+        Fase4.inimigos4[1] = Fase4.inimigos4[5] = 1;
+        FaseBonus.reiniciaStrings();
     }
 }

@@ -179,11 +179,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public void reiniciaJogo(){
         apagaTudo();
-        Fase1.reiniciaArray();
-        Fase2.reiniciaArray();
-        Fase3.reiniciaArray();
-        Fase4.reiniciaArray();
-        FaseBonus.reiniciaArray();
+        this.cj.reiniciaArraysInimigos();
         try {
             hero.vida(faseAtual, 2);
         } catch (IOException ex) {

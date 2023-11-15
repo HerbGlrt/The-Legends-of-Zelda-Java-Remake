@@ -4,8 +4,7 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
 import Controler.Tela;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+
 
 public class Desenho implements Serializable {
     static Tela jCenario;

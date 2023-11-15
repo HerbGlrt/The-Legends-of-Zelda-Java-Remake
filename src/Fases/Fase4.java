@@ -20,18 +20,9 @@ public class Fase4 {
 
         };
     
-    private static int[] inimigos4 = {2, 1, 0, 3, 4, 1, 2, 6, 4};
-    private static int[] inimigos4Bkp = {2, 1, 0, 3, 4, 1, 2, 6, 4};
+    public static int[] inimigos4 = {2, 1, 0, 3, 4, 1, 2, 6, 4};
     
     private static char[] teleports4 = {2, 'c', 'd', 10, 13, 1, 13, 'b', 'a', 6, 1, 6, 15};
-    
-    public static void reiniciaArray(){
-        Fase4.setArrayInimigos(Fase4.getInimigosBkp());
-    }
-    
-    public static int[] getInimigosBkp() {
-        return inimigos4Bkp;
-    }
 
     public static String[][] getMatrizStrings() {
         return matriz4;
