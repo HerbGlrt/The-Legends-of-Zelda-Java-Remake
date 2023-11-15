@@ -1,6 +1,5 @@
 package Modelo;
 
-import auxiliar.Posicao;
 import java.io.Serializable;
 
 public class Teleport extends Personagem implements Serializable{

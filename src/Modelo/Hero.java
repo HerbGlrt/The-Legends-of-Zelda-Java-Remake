@@ -1,30 +1,13 @@
 package Modelo;
 
-import Auxiliar.Consts;
-import Modelo.Estatico;
 import Auxiliar.Desenho;
-import Controler.ControleDeJogo;
-import Controler.Tela;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Hero extends Personagem implements Serializable{
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
-    }
-
-    public void setOlhando(int olhando) {
-        this.olhando = olhando;
-    }
-
-    public int getOlhando() {
-        return olhando;
     }
     
     public int vida(ArrayList<Personagem> umaFase, int mode) throws IOException{    // Mode == 0, perde vida. Mode == 1, ganha vida. Mode == 2, seta vida para 3

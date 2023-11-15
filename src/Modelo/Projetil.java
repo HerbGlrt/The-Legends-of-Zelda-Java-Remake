@@ -2,8 +2,6 @@ package Modelo;
 
 import Auxiliar.Desenho;
 import java.io.Serializable;
-import Controler.Tela;
-import java.awt.Graphics;
 
 public class Projetil extends Personagem implements Serializable{
     int i; // olhando

@@ -4,7 +4,6 @@ import Modelo.Personagem;
 import Fases.FaseBonus;
 import Modelo.Hero;
 import Modelo.Octorok;
-import Modelo.Lynel;
 import Modelo.Moblin;
 import Fases.Fase;
 import Fases.Fase1;

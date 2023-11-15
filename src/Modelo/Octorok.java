@@ -2,9 +2,6 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
-import Controler.Tela;
-import java.awt.Graphics;
-import java.io.IOException;
 import java.io.Serializable;
 
 public class Octorok extends Inimigos implements Serializable{
